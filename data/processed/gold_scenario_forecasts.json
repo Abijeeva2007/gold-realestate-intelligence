@@ -1,0 +1,236 @@
+{
+  "methodology": "Conditional Macro Factor Analysis & Validated Ensemble Consensus",
+  "audit_disclaimer": "Conditional scenarios represent hypothetical macroeconomic state realizations (if macro state X occurs), strictly distinct from unconditional statistically calibrated prediction intervals.",
+  "forecast_origin_date": "2026-11-04",
+  "base_spot_price_usd": 4073.0,
+  "scenarios": {
+    "bullish": {
+      "name": "Bullish Scenario: Sovereign De-Dollarization & Real Yield Compression",
+      "macro_thesis": "Central banks accelerate official gold accumulation (>1,200 tonnes/year) amid global reserve diversification; the Federal Reserve cuts rates as labor market softens, reducing US 10-year real yields below 1.0%; safe-haven bid remains elevated.",
+      "macro_assumptions": {
+        "us_real_yield_10y": "Declines from ~1.95% to 0.75% (-120 bps)",
+        "dxy_index": "Depreciates from 104.5 to 97.0 (-7.2%)",
+        "central_bank_purchases": "Surges to 1,300 tonnes/year (+25% above baseline)",
+        "geopolitical_risk": "Elevated regional tensions maintain persistent hedge premium"
+      },
+      "risk_factors": [
+        "Unexpected resurgence in US inflation forcing hawkish Fed pivot",
+        "Sudden diplomatic resolution easing safe-haven allocations",
+        "Higher domestic Indian import duties dampening physical retail demand"
+      ],
+      "horizon_projections": [
+        {
+          "horizon_trading_days": 30,
+          "target_calendar_date_approx": "2026-12-17",
+          "target_price_usd": 4349.96,
+          "projected_return_pct": 6.8,
+          "lower_range_usd": 4215.55,
+          "upper_range_usd": 4480.3
+        },
+        {
+          "horizon_trading_days": 90,
+          "target_calendar_date_approx": "2027-03-14",
+          "target_price_usd": 4720.61,
+          "projected_return_pct": 15.9,
+          "lower_range_usd": 4521.03,
+          "upper_range_usd": 4928.33
+        },
+        {
+          "horizon_trading_days": 180,
+          "target_calendar_date_approx": "2027-07-23",
+          "target_price_usd": 5180.86,
+          "projected_return_pct": 27.2,
+          "lower_range_usd": 4887.6,
+          "upper_range_usd": 5457.82
+        },
+        {
+          "horizon_trading_days": 365,
+          "target_calendar_date_approx": "2028-04-16",
+          "target_price_usd": 5848.83,
+          "projected_return_pct": 43.6,
+          "lower_range_usd": 5376.36,
+          "upper_range_usd": 6313.15
+        }
+      ],
+      "price_trajectory": [
+        {
+          "date": "2026-11-04",
+          "price": 4073.0,
+          "day": 0
+        },
+        {
+          "date": "2026-12-17",
+          "price": 4349.96,
+          "day": 30
+        },
+        {
+          "date": "2027-03-14",
+          "price": 4720.61,
+          "day": 90
+        },
+        {
+          "date": "2027-07-23",
+          "price": 5180.86,
+          "day": 180
+        },
+        {
+          "date": "2028-04-16",
+          "price": 5848.83,
+          "day": 365
+        }
+      ]
+    },
+    "base": {
+      "name": "Base Scenario: Secular Trend Consolidation & Disinflation Baseline",
+      "macro_thesis": "Grounded directly in validated ensemble model projections (XGBoost stationary direct return regressor + Prophet intermediate trend). Reflects orderly disinflation, neutral US monetary trajectory, and sustained but stable central bank purchases.",
+      "macro_assumptions": {
+        "us_real_yield_10y": "Oscillates within neutral range (1.70% - 2.10%)",
+        "dxy_index": "Trades in range-bound band (102.0 - 105.5)",
+        "central_bank_purchases": "Consistent structural accumulation (~950 tonnes/year)",
+        "physical_demand": "Indian and Chinese jewelry demand stabilizes at prevailing spot levels"
+      },
+      "risk_factors": [
+        "Sticky core inflation delaying anticipated central bank easing",
+        "Volatility clustering around US macroeconomic data releases",
+        "Tactical ETF profit-taking capping near-term rallies"
+      ],
+      "horizon_projections": [
+        {
+          "horizon_trading_days": 30,
+          "target_calendar_date_approx": "2026-12-17",
+          "target_price_usd": 4076.67,
+          "projected_return_pct": 0.09,
+          "lower_range_usd": 3869.35,
+          "upper_range_usd": 4276.65
+        },
+        {
+          "horizon_trading_days": 90,
+          "target_calendar_date_approx": "2027-03-14",
+          "target_price_usd": 4259.54,
+          "projected_return_pct": 4.58,
+          "lower_range_usd": 3991.54,
+          "upper_range_usd": 4521.03
+        },
+        {
+          "horizon_trading_days": 180,
+          "target_calendar_date_approx": "2027-07-23",
+          "target_price_usd": 4145.09,
+          "projected_return_pct": 1.77,
+          "lower_range_usd": 3747.16,
+          "upper_range_usd": 4561.76
+        },
+        {
+          "horizon_trading_days": 365,
+          "target_calendar_date_approx": "2028-04-16",
+          "target_price_usd": 4343.04,
+          "projected_return_pct": 6.63,
+          "lower_range_usd": 3828.62,
+          "upper_range_usd": 4887.6
+        }
+      ],
+      "price_trajectory": [
+        {
+          "date": "2026-11-04",
+          "price": 4073.0,
+          "day": 0
+        },
+        {
+          "date": "2026-12-17",
+          "price": 4076.67,
+          "day": 30
+        },
+        {
+          "date": "2027-03-14",
+          "price": 4259.54,
+          "day": 90
+        },
+        {
+          "date": "2027-07-23",
+          "price": 4145.09,
+          "day": 180
+        },
+        {
+          "date": "2028-04-16",
+          "price": 4343.04,
+          "day": 365
+        }
+      ]
+    },
+    "bearish": {
+      "name": "Bearish Scenario: Hawkish Higher-for-Longer & Strong Dollar Retracement",
+      "macro_thesis": "US economic exceptionalism drives real yields to multi-year highs (>2.5%); strong dollar rally prompts institutional gold fund liquidation; central bank reserve diversification slows as alternative sovereign yields become attractive.",
+      "macro_assumptions": {
+        "us_real_yield_10y": "Spikes to 2.65% (+70 bps)",
+        "dxy_index": "Appreciates toward 108.0 (+3.5%)",
+        "central_bank_purchases": "Moderates sharply to 500 tonnes/year (-45% slowdown)",
+        "etf_flows": "Sustained net outflows from Western bullion ETFs"
+      },
+      "risk_factors": [
+        "Accelerated margin liquidation in futures markets during technical breakdowns",
+        "Indian Rupee appreciation reducing domestic landed gold import prices",
+        "Liquidity squeeze in global credit markets prompting cash hoarding"
+      ],
+      "horizon_projections": [
+        {
+          "horizon_trading_days": 30,
+          "target_calendar_date_approx": "2026-12-17",
+          "target_price_usd": 3820.47,
+          "projected_return_pct": -6.2,
+          "lower_range_usd": 3665.7,
+          "upper_range_usd": 3950.81
+        },
+        {
+          "horizon_trading_days": 90,
+          "target_calendar_date_approx": "2027-03-14",
+          "target_price_usd": 3580.17,
+          "projected_return_pct": -12.1,
+          "lower_range_usd": 3380.59,
+          "upper_range_usd": 3747.16
+        },
+        {
+          "horizon_trading_days": 180,
+          "target_calendar_date_approx": "2027-07-23",
+          "target_price_usd": 3388.74,
+          "projected_return_pct": -16.8,
+          "lower_range_usd": 3136.21,
+          "upper_range_usd": 3624.97
+        },
+        {
+          "horizon_trading_days": 365,
+          "target_calendar_date_approx": "2028-04-16",
+          "target_price_usd": 3201.38,
+          "projected_return_pct": -21.4,
+          "lower_range_usd": 2891.83,
+          "upper_range_usd": 3502.78
+        }
+      ],
+      "price_trajectory": [
+        {
+          "date": "2026-11-04",
+          "price": 4073.0,
+          "day": 0
+        },
+        {
+          "date": "2026-12-17",
+          "price": 3820.47,
+          "day": 30
+        },
+        {
+          "date": "2027-03-14",
+          "price": 3580.17,
+          "day": 90
+        },
+        {
+          "date": "2027-07-23",
+          "price": 3388.74,
+          "day": 180
+        },
+        {
+          "date": "2028-04-16",
+          "price": 3201.38,
+          "day": 365
+        }
+      ]
+    }
+  }
+}

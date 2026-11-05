@@ -1,0 +1,126 @@
+{
+  "validation_results": {
+    "overall_status": "PASSED",
+    "date_range_check": {
+      "valid": true,
+      "start_date": "2000-08-30",
+      "end_date": "2026-11-04",
+      "years_span": 26.18,
+      "target_min_years": 20,
+      "message": "Dataset covers 26.18 years (Target >= 20 years: PASS)"
+    },
+    "duplicate_check": {
+      "valid": "True",
+      "duplicate_count": 0,
+      "message": "Found 0 duplicate timestamps (Expected 0: PASS)"
+    },
+    "missingness_check": {
+      "valid": true,
+      "total_records": 6571,
+      "columns": {
+        "date": {
+          "missing_count": 0,
+          "missing_pct": 0.0
+        },
+        "close_usd_per_troy_oz": {
+          "missing_count": 0,
+          "missing_pct": 0.0
+        },
+        "open_usd_per_troy_oz": {
+          "missing_count": 0,
+          "missing_pct": 0.0
+        },
+        "high_usd_per_troy_oz": {
+          "missing_count": 0,
+          "missing_pct": 0.0
+        },
+        "low_usd_per_troy_oz": {
+          "missing_count": 0,
+          "missing_pct": 0.0
+        },
+        "volume": {
+          "missing_count": 0,
+          "missing_pct": 0.0
+        },
+        "fx_usdinr": {
+          "missing_count": 1513,
+          "missing_pct": 23.03
+        },
+        "gold_market_open": {
+          "missing_count": 0,
+          "missing_pct": 0.0
+        },
+        "fx_market_open": {
+          "missing_count": 0,
+          "missing_pct": 0.0
+        },
+        "both_markets_open": {
+          "missing_count": 0,
+          "missing_pct": 0.0
+        },
+        "gold_parity_inr_per_10g": {
+          "missing_count": 1513,
+          "missing_pct": 23.03
+        },
+        "rbi_mumbai_monthly_avg_inr_per_10g": {
+          "missing_count": 5545,
+          "missing_pct": 84.39
+        },
+        "rbi_monthly_spread_inr_per_10g": {
+          "missing_count": 5545,
+          "missing_pct": 84.39
+        },
+        "regime_name": {
+          "missing_count": 0,
+          "missing_pct": 0.0
+        },
+        "is_crisis_regime": {
+          "missing_count": 0,
+          "missing_pct": 0.0
+        },
+        "is_interpolated": {
+          "missing_count": 0,
+          "missing_pct": 0.0
+        }
+      },
+      "any_fabricated_or_interpolated": false,
+      "message": "Strict non-interpolation policy verified (No synthetic records detected)."
+    },
+    "units_and_ranges_check": {
+      "checks": {
+        "gold_usd_bounds": {
+          "min": 255.10000610351562,
+          "max": 5318.39990234375,
+          "in_bounds": true,
+          "expected": [
+            200.0,
+            10000.0
+          ]
+        },
+        "fx_usdinr_bounds": {
+          "min": 39.04499816894531,
+          "max": 96.87689971923828,
+          "in_bounds": true,
+          "expected": [
+            7.0,
+            150.0
+          ]
+        },
+        "parity_formula_integrity": {
+          "valid": true,
+          "max_discrepancy_inr": 0.0,
+          "tested_rows": 5058
+        }
+      },
+      "valid": true
+    }
+  },
+  "collection_meta": {
+    "comex_raw": "/Users/abijeeva/Documents/gold&realestate/data/raw/comex_gold_raw.csv",
+    "fx_fred_raw": "None",
+    "fx_yahoo_raw": "/Users/abijeeva/Documents/gold&realestate/data/raw/yahoo_usdinr_raw.csv",
+    "rbi_annual_raw": "/Users/abijeeva/Documents/gold&realestate/data/raw/rbi_gold_annual_raw.csv",
+    "rbi_monthly_raw": "/Users/abijeeva/Documents/gold&realestate/data/raw/rbi_gold_monthly_raw.csv",
+    "world_bank_raw": "/Users/abijeeva/Documents/gold&realestate/data/raw/world_bank_gold_monthly_raw.csv"
+  }
+}

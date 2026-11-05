@@ -1,0 +1,25 @@
+{
+  "source_name": "COMEX_Gold_Futures",
+  "filename": "comex_gold_raw.csv",
+  "collected_at_utc": "2026-11-05T05:07:03.691479+00:00",
+  "file_size_bytes": 753059,
+  "metadata": {
+    "ticker": "GC=F",
+    "unit": "USD per troy ounce",
+    "provider": "Yahoo Finance (Market Feed)",
+    "total_rows": 6571,
+    "earliest_date": "2000-08-30 00:00:00-04:00",
+    "latest_date": "2026-11-04 00:00:00-05:00",
+    "columns": [
+      "Date",
+      "Open",
+      "High",
+      "Low",
+      "Close",
+      "Adj Close",
+      "Volume",
+      "Dividends",
+      "Stock Splits"
+    ]
+  }
+}

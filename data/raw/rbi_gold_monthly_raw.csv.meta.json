@@ -1,0 +1,13 @@
+{
+  "source_name": "RBI_Table_164_Monthly_CSV",
+  "filename": "rbi_gold_monthly_raw.csv",
+  "collected_at_utc": "2026-11-05T05:07:13.471434+00:00",
+  "file_size_bytes": 1946,
+  "metadata": {
+    "record_count": 49,
+    "earliest_period": "2022-23 Apr",
+    "latest_period": "2026-27 Apr",
+    "unit_domestic": "INR per 10 grams",
+    "unit_foreign": "USD per troy ounce"
+  }
+}

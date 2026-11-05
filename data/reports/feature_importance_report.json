@@ -1,0 +1,33 @@
+{
+  "generated_at": "2026-11-05",
+  "feature_importance": {
+    "XGBoost": {
+      "repo_rate": 0.0,
+      "home_loan_walr": 0.0669,
+      "housing_credit_lakh_cr": 0.0,
+      "cpi_housing": 0.0,
+      "bis_hpi": 0.9331
+    },
+    "Random_Forest": {
+      "repo_rate": 0.0,
+      "home_loan_walr": 0.0146,
+      "housing_credit_lakh_cr": 0.0233,
+      "cpi_housing": 0.0355,
+      "bis_hpi": 0.9265
+    },
+    "Gradient_Boosting": {
+      "repo_rate": 0.0,
+      "home_loan_walr": 0.0029,
+      "housing_credit_lakh_cr": 0.0042,
+      "cpi_housing": 0.0029,
+      "bis_hpi": 0.9899
+    },
+    "Ridge_Standardized_Weights": {
+      "repo_rate": 0.0,
+      "home_loan_walr": 2.5866,
+      "housing_credit_lakh_cr": -37.5055,
+      "cpi_housing": -100.877,
+      "bis_hpi": 41.9799
+    }
+  }
+}

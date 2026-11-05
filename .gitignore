@@ -1,0 +1,32 @@
+# Python Virtual Environments & Bytecode
+.venv/
+env/
+venv/
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.pytest_cache/
+
+# Node.js & Next.js Build Outputs
+node_modules/
+frontend/node_modules/
+frontend/.next/
+.next/
+out/
+build/
+dist/
+
+# Environment Variables & Secrets
+.env
+.env.local
+.env.*.local
+*.pem
+*.key
+
+# Operating System & IDE Artifacts
+.DS_Store
+.idea/
+.vscode/
+*.swp
+*.log

@@ -1,0 +1,13 @@
+{
+  "source_name": "Yahoo_USDINR_Spot",
+  "filename": "yahoo_usdinr_raw.csv",
+  "collected_at_utc": "2026-11-05T05:07:12.276404+00:00",
+  "file_size_bytes": 743263,
+  "metadata": {
+    "ticker": "INR=X",
+    "unit": "INR per 1 USD",
+    "total_rows": 5947,
+    "earliest_date": "2003-12-01 00:00:00+00:00",
+    "latest_date": "2026-11-05 00:00:00+00:00"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "total_districts": 38,
+  "covered_districts_count": 38,
+  "zero_coverage_districts_count": 0,
+  "district_coverage_pct": 100.0,
+  "total_price_observations": 158,
+  "price_type_counts": {
+    "GUIDELINE": 68,
+    "BANK_ASSESSMENT": 71,
+    "ASKING": 6,
+    "RENTAL": 13
+  },
+  "property_type_counts": {
+    "RESIDENTIAL_PLOT": 66,
+    "RESIDENTIAL_APARTMENT": 85,
+    "COMMERCIAL_PROPERTY": 5,
+    "AGRICULTURAL_LAND": 1,
+    "VILLA": 1
+  },
+  "unit_errors_count": 0,
+  "market_indices_count": 44,
+  "macro_indicators_count": 27
+}

@@ -1,0 +1,13 @@
+{
+  "source_name": "RBI_Table_35_Annual_CSV",
+  "filename": "rbi_gold_annual_raw.csv",
+  "collected_at_utc": "2026-11-05T05:07:12.980078+00:00",
+  "file_size_bytes": 1404,
+  "metadata": {
+    "record_count": 41,
+    "earliest_fy": "1985-86",
+    "latest_fy": "2025-26",
+    "unit_domestic": "INR per 10 grams",
+    "unit_foreign": "USD per troy ounce"
+  }
+}

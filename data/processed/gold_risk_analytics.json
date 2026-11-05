@@ -1,0 +1,121 @@
+{
+  "latest_date": "2026-11-04",
+  "volatility": {
+    "realized_vol_7d_pct": 33.77,
+    "realized_vol_30d_pct": 22.41,
+    "realized_vol_90d_pct": 21.79,
+    "full_series_vol_pct": 17.98,
+    "annualized_vol_std_daily_pct": 17.95
+  },
+  "drawdowns": {
+    "current_price_usd": 4073.0,
+    "all_time_high_usd": 5318.4,
+    "all_time_high_date": "2026-01-29",
+    "current_drawdown_pct": -23.42,
+    "days_since_ath": 279,
+    "trading_days_since_ath": 193,
+    "historical_max_drawdown_pct": -44.36,
+    "historical_peak_price_usd": 1888.7,
+    "historical_peak_date": "2011-08-22",
+    "historical_trough_price_usd": 1050.8,
+    "historical_trough_date": "2015-12-17",
+    "historical_recovery_date": "2020-07-23",
+    "historical_recovery_trading_days": 2241,
+    "historical_recovery_calendar_days": 3258,
+    "historical_recovery_status": "Fully Recovered"
+  },
+  "value_at_risk": {
+    "methodology": "Historical Simulation (Empirical Percentile Distribution)",
+    "observations_evaluated": 6570,
+    "metrics": {
+      "var_95pct_1d": 1.78,
+      "cvar_95pct_1d": 2.66,
+      "var_99pct_1d": 3.12,
+      "cvar_99pct_1d": 4.22,
+      "var_95pct_10d": 5.62,
+      "cvar_95pct_10d": 8.42,
+      "var_99pct_10d": 9.88,
+      "cvar_99pct_10d": 13.35
+    },
+    "explanations": {
+      "var_95pct_1d": "With 95% confidence, daily loss will not exceed 1.78%.",
+      "cvar_95pct_1d": "If a 95% tail event occurs, the expected average daily loss is 2.66%.",
+      "var_99pct_1d": "With 99% confidence, daily loss will not exceed 3.12%.",
+      "cvar_99pct_1d": "If a 99% tail event occurs, the expected average daily loss is 4.22%.",
+      "var_95pct_10d": "With 95% confidence, 10-day loss will not exceed 5.62%.",
+      "var_99pct_10d": "With 99% confidence, 10-day loss will not exceed 9.88%."
+    }
+  },
+  "stress_testing": {
+    "methodology": "Factor Beta Sensitivity and Historical Analogue Elasticity",
+    "scenarios": [
+      {
+        "id": "STRESS_USD_APPRECIATION",
+        "name": "Sharp USD Appreciation (Dollar Rally)",
+        "historical_analogue": "2014-2015 ECB QE & Fed Divergence Dollar Surge",
+        "shock_magnitude": "US Dollar Index (DXY) appreciates by +12.0%",
+        "gold_elasticity_beta": -0.8,
+        "projected_return_pct": -9.6,
+        "projected_price_usd": 3681.99,
+        "risk_transmission": "Gold is internationally denominated in USD. A stronger dollar makes bullion more expensive in foreign currencies, dampening non-US demand and prompting fund liquidation.",
+        "severity": "Moderate to High"
+      },
+      {
+        "id": "STRESS_RISING_REAL_YIELDS",
+        "name": "Rising US Real Yields (Hawkish Fed Shock)",
+        "historical_analogue": "2013 Taper Tantrum & 2022 Fed Rate Hiking Cycle",
+        "shock_magnitude": "US 10-Year Real Yield (TIPS) surges by +175 bps",
+        "gold_elasticity_beta": -6.2,
+        "projected_return_pct": -10.85,
+        "projected_price_usd": 3631.08,
+        "risk_transmission": "As zero-yielding store of value, gold competes directly against safe real return on US Treasuries. Rapid increases in real yields raise the opportunity cost of holding non-yielding bullion.",
+        "severity": "High"
+      },
+      {
+        "id": "STRESS_GEOPOLITICAL_ESCALATION",
+        "name": "Geopolitical Escalation (Crisis Safe-Haven Flight)",
+        "historical_analogue": "February 2022 Russia-Ukraine Outbreak & 2023 Middle East Escalation",
+        "shock_magnitude": "Global Geopolitical Risk Index (GPR) surges > 3 standard deviations",
+        "gold_elasticity_beta": 1.25,
+        "projected_return_pct": 11.2,
+        "projected_price_usd": 4529.18,
+        "risk_transmission": "Institutional capital and sovereign reserve managers flee sovereign sanction risks and financial counterparty exposure toward physical unencumbered bullion.",
+        "severity": "High Tail Risk (Upside for Gold)"
+      },
+      {
+        "id": "STRESS_INFLATION_SURPRISES",
+        "name": "Persistent Inflation Surprises (Stagflation Risk)",
+        "historical_analogue": "1970s Oil Shocks & 2021-2022 Post-Pandemic Inflation Spike",
+        "shock_magnitude": "Headline CPI prints run +2.5% above central bank targets with slowing growth",
+        "gold_elasticity_beta": 0.85,
+        "projected_return_pct": 8.5,
+        "projected_price_usd": 4419.2,
+        "risk_transmission": "Negative real cash returns incentivize wealth preservation in hard monetary assets; historical bullion purchasing power preserved during stagflationary regimes.",
+        "severity": "Moderate"
+      },
+      {
+        "id": "STRESS_CENTRAL_BANK_SLOWDOWN",
+        "name": "Central-Bank Demand Slowdown",
+        "historical_analogue": "2015-2017 EM Reserve Accumulation Pause",
+        "shock_magnitude": "Official sector net annual purchases drop by 50% (from ~1,000t/yr to 500t/yr)",
+        "gold_elasticity_beta": -0.65,
+        "projected_return_pct": -8.45,
+        "projected_price_usd": 3728.83,
+        "risk_transmission": "Official sector reserve de-dollarization has served as the marginal structural price-setter since 2022. Halving purchase velocity removes persistent structural buying bid.",
+        "severity": "Moderate"
+      },
+      {
+        "id": "STRESS_USDINR_SHOCK",
+        "name": "USD/INR Exchange Rate Shock (Rupee Depreciation)",
+        "historical_analogue": "2013 Fragile Five Rupee Tumble & 2022 USD/INR Breakout",
+        "shock_magnitude": "USD/INR exchange rate depreciates by +8.0% (e.g. from 94.9 to ~102.5 INR/USD)",
+        "gold_elasticity_beta": 0.98,
+        "projected_return_pct": 7.84,
+        "projected_price_usd": 4073.0,
+        "projected_parity_inr_per_10g": 134070.72,
+        "risk_transmission": "Because domestic Indian prices track parity (Spot USD * FX * 0.3215 * Duty/Taxes), Rupee weakness causes immediate proportionate surge in domestic INR bullion prices.",
+        "severity": "Moderate (Domestic Asymmetry)"
+      }
+    ]
+  }
+}

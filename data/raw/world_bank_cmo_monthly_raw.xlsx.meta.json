@@ -1,0 +1,10 @@
+{
+  "source_name": "World_Bank_CMO_PinkSheet",
+  "filename": "world_bank_cmo_monthly_raw.xlsx",
+  "collected_at_utc": "2026-11-05T05:07:13.708671+00:00",
+  "file_size_bytes": 765246,
+  "metadata": {
+    "url": "https://thedocs.worldbank.org/en/doc/5d903e848db1d1b83e0ec8f744e55570-0350012021/related/CMO-Historical-Data-Monthly.xlsx",
+    "unit": "USD per troy ounce"
+  }
+}

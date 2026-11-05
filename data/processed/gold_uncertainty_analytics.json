@@ -1,0 +1,179 @@
+{
+  "forecast_origin_date": "2026-11-04",
+  "current_price_usd": 4073.0,
+  "conformal_multipliers": {
+    "30": {
+      "0.5": 0.5767,
+      "0.8": 1.0262,
+      "0.95": 1.6114
+    },
+    "90": {
+      "0.5": 0.4135,
+      "0.8": 0.9936,
+      "0.95": 1.3716
+    },
+    "180": {
+      "0.5": 0.7374,
+      "0.8": 1.0467,
+      "0.95": 1.3068
+    },
+    "365": {
+      "0.5": 0.6142,
+      "0.8": 1.4383,
+      "0.95": 2.0133
+    }
+  },
+  "test_uncertainty_audit": {
+    "methodology": "Validation Split Conformal Prediction (Non-Conformity Quantile Scaling)",
+    "validation_period": "2023-01-03 to 2023-12-29 (Zero Peeking at 2024-2026 Test Set)",
+    "test_evaluation_period": "2024-01-02 to 2026-11-04 (Held-Out Test Benchmark)",
+    "horizon_evaluations": [
+      {
+        "horizon_trading_days": 30,
+        "evaluation_samples": 686,
+        "uncalibrated_gaussian_95_cov_pct": 91.69,
+        "uncalibrated_gaussian_95_width_usd": 631.84,
+        "conformal_50_cov_pct": 36.88,
+        "conformal_50_width_usd": 185.91,
+        "conformal_80_cov_pct": 63.99,
+        "conformal_80_width_usd": 330.81,
+        "conformal_95_cov_pct": 86.88,
+        "conformal_95_width_usd": 519.46,
+        "conformal_95_upper_breaches": 76,
+        "conformal_95_lower_breaches": 14,
+        "latest_60d_rolling_coverage_pct": 80.0,
+        "calibration_diagnosis": "Under-Coverage Flag: Severe Secular Bull Drift In Test Regime"
+      },
+      {
+        "horizon_trading_days": 90,
+        "evaluation_samples": 626,
+        "uncalibrated_gaussian_95_cov_pct": 89.3,
+        "uncalibrated_gaussian_95_width_usd": 1061.76,
+        "conformal_50_cov_pct": 31.47,
+        "conformal_50_width_usd": 224.0,
+        "conformal_80_cov_pct": 57.99,
+        "conformal_80_width_usd": 538.25,
+        "conformal_95_cov_pct": 71.41,
+        "conformal_95_width_usd": 743.02,
+        "conformal_95_upper_breaches": 176,
+        "conformal_95_lower_breaches": 3,
+        "latest_60d_rolling_coverage_pct": 100.0,
+        "calibration_diagnosis": "Under-Coverage Flag: Severe Secular Bull Drift In Test Regime"
+      },
+      {
+        "horizon_trading_days": 180,
+        "evaluation_samples": 536,
+        "uncalibrated_gaussian_95_cov_pct": 78.36,
+        "uncalibrated_gaussian_95_width_usd": 1429.86,
+        "conformal_50_cov_pct": 38.62,
+        "conformal_50_width_usd": 537.95,
+        "conformal_80_cov_pct": 47.2,
+        "conformal_80_width_usd": 763.59,
+        "conformal_95_cov_pct": 56.34,
+        "conformal_95_width_usd": 953.34,
+        "conformal_95_upper_breaches": 234,
+        "conformal_95_lower_breaches": 0,
+        "latest_60d_rolling_coverage_pct": 100.0,
+        "calibration_diagnosis": "Under-Coverage Flag: Severe Secular Bull Drift In Test Regime"
+      },
+      {
+        "horizon_trading_days": 365,
+        "evaluation_samples": 351,
+        "uncalibrated_gaussian_95_cov_pct": 65.81,
+        "uncalibrated_gaussian_95_width_usd": 1906.75,
+        "conformal_50_cov_pct": 10.83,
+        "conformal_50_width_usd": 597.51,
+        "conformal_80_cov_pct": 40.17,
+        "conformal_80_width_usd": 1399.22,
+        "conformal_95_cov_pct": 69.23,
+        "conformal_95_width_usd": 1958.6,
+        "conformal_95_upper_breaches": 108,
+        "conformal_95_lower_breaches": 0,
+        "latest_60d_rolling_coverage_pct": 100.0,
+        "calibration_diagnosis": "Under-Coverage Flag: Severe Secular Bull Drift In Test Regime"
+      }
+    ]
+  },
+  "production_intervals": [
+    {
+      "horizon_trading_days": 30,
+      "point_forecast_usd": 4076.7,
+      "expected_return_pct": 0.09,
+      "interval_50": {
+        "lower_usd": 3964.37,
+        "upper_usd": 4189.04,
+        "width_usd": 224.67
+      },
+      "interval_80": {
+        "lower_usd": 3876.81,
+        "upper_usd": 4276.6,
+        "width_usd": 399.79
+      },
+      "interval_95": {
+        "lower_usd": 3762.82,
+        "upper_usd": 4390.59,
+        "width_usd": 627.77
+      }
+    },
+    {
+      "horizon_trading_days": 90,
+      "point_forecast_usd": 4259.34,
+      "expected_return_pct": 4.58,
+      "interval_50": {
+        "lower_usd": 4120.31,
+        "upper_usd": 4398.38,
+        "width_usd": 278.07
+      },
+      "interval_80": {
+        "lower_usd": 3925.25,
+        "upper_usd": 4593.43,
+        "width_usd": 668.18
+      },
+      "interval_95": {
+        "lower_usd": 3798.15,
+        "upper_usd": 4720.53,
+        "width_usd": 922.38
+      }
+    },
+    {
+      "horizon_trading_days": 180,
+      "point_forecast_usd": 4145.23,
+      "expected_return_pct": 1.77,
+      "interval_50": {
+        "lower_usd": 3785.81,
+        "upper_usd": 4504.64,
+        "width_usd": 718.83
+      },
+      "interval_80": {
+        "lower_usd": 3635.05,
+        "upper_usd": 4655.4,
+        "width_usd": 1020.35
+      },
+      "interval_95": {
+        "lower_usd": 3508.28,
+        "upper_usd": 4782.18,
+        "width_usd": 1273.9
+      }
+    },
+    {
+      "horizon_trading_days": 365,
+      "point_forecast_usd": 4343.01,
+      "expected_return_pct": 6.63,
+      "interval_50": {
+        "lower_usd": 3871.15,
+        "upper_usd": 4814.86,
+        "width_usd": 943.71
+      },
+      "interval_80": {
+        "lower_usd": 3238.04,
+        "upper_usd": 5447.97,
+        "width_usd": 2209.93
+      },
+      "interval_95": {
+        "lower_usd": 2796.3,
+        "upper_usd": 5889.71,
+        "width_usd": 3093.4
+      }
+    }
+  ]
+}

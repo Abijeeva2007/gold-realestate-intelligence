@@ -1,0 +1,197 @@
+{
+  "champion_model": "XGBoost (Champion)",
+  "validation_framework": "Chronological Walk-Forward Out-of-Sample",
+  "train_sample_size": 49,
+  "test_sample_size": 22,
+  "train_period": "2018-03-31 to 2024-12-31",
+  "test_period": "2025-01-01 to 2026-09-30",
+  "models": {
+    "Naive Baseline": {
+      "algorithm": "Naive Persistence Baseline",
+      "model_family": "BASELINE",
+      "mae": 1920.45,
+      "rmse": 2402.95,
+      "r2_score": 0.0,
+      "smape_pct": 25.96,
+      "mape_pct": 21.87,
+      "directional_accuracy_pct": 50.0,
+      "skill_score_vs_baseline": 0.0,
+      "residual_diagnostics": {
+        "mean_residual": 1916.82,
+        "std_residual": 1449.13,
+        "residual_skewness": 0.24
+      }
+    },
+    "Linear Regression (OLS)": {
+      "algorithm": "Ordinary Least Squares Linear Regression",
+      "model_family": "LINEAR",
+      "mae": 1329.55,
+      "rmse": 1502.03,
+      "r2_score": -0.0743,
+      "smape_pct": 16.96,
+      "mape_pct": 16.4,
+      "directional_accuracy_pct": 62.5,
+      "skill_score_vs_baseline": 30.8,
+      "residual_diagnostics": {
+        "mean_residual": 437.49,
+        "std_residual": 1436.91,
+        "residual_skewness": 0.248
+      }
+    },
+    "Ridge Regression": {
+      "algorithm": "L2-Regularized Ridge Regression",
+      "model_family": "REGULARIZED_LINEAR",
+      "mae": 1329.55,
+      "rmse": 1490.86,
+      "r2_score": -0.0584,
+      "smape_pct": 16.96,
+      "mape_pct": 16.47,
+      "directional_accuracy_pct": 62.5,
+      "skill_score_vs_baseline": 30.8,
+      "residual_diagnostics": {
+        "mean_residual": 404.59,
+        "std_residual": 1434.91,
+        "residual_skewness": 0.247
+      }
+    },
+    "Lasso Regression": {
+      "algorithm": "L1-Regularized Lasso Regression (Sparsity)",
+      "model_family": "REGULARIZED_LINEAR",
+      "mae": 1329.55,
+      "rmse": 1494.11,
+      "r2_score": -0.063,
+      "smape_pct": 16.96,
+      "mape_pct": 16.45,
+      "directional_accuracy_pct": 62.5,
+      "skill_score_vs_baseline": 30.8,
+      "residual_diagnostics": {
+        "mean_residual": 415.08,
+        "std_residual": 1435.29,
+        "residual_skewness": 0.247
+      }
+    },
+    "Random Forest": {
+      "algorithm": "Random Forest Regressor (Non-linear Bagging)",
+      "model_family": "TREE_ENSEMBLE",
+      "mae": 1343.16,
+      "rmse": 1570.94,
+      "r2_score": -0.1752,
+      "smape_pct": 17.13,
+      "mape_pct": 16.22,
+      "directional_accuracy_pct": 100.0,
+      "skill_score_vs_baseline": 30.1,
+      "residual_diagnostics": {
+        "mean_residual": 606.54,
+        "std_residual": 1449.13,
+        "residual_skewness": 0.24
+      }
+    },
+    "Gradient Boosting": {
+      "algorithm": "Gradient Boosting Machine (Sequential Residual Boosting)",
+      "model_family": "TREE_ENSEMBLE",
+      "mae": 1347.91,
+      "rmse": 1591.86,
+      "r2_score": -0.2067,
+      "smape_pct": 17.19,
+      "mape_pct": 16.17,
+      "directional_accuracy_pct": 100.0,
+      "skill_score_vs_baseline": 29.8,
+      "residual_diagnostics": {
+        "mean_residual": 658.83,
+        "std_residual": 1449.13,
+        "residual_skewness": 0.24
+      }
+    },
+    "XGBoost (Champion)": {
+      "algorithm": "Extreme Gradient Boosting with L1/L2 Regularization",
+      "model_family": "TREE_ENSEMBLE",
+      "mae": 1350.73,
+      "rmse": 1604.93,
+      "r2_score": -0.2266,
+      "smape_pct": 17.23,
+      "mape_pct": 16.14,
+      "directional_accuracy_pct": 100.0,
+      "skill_score_vs_baseline": 29.7,
+      "residual_diagnostics": {
+        "mean_residual": 689.81,
+        "std_residual": 1449.13,
+        "residual_skewness": 0.24
+      }
+    },
+    "ARIMA(1,1,1)": {
+      "algorithm": "Autoregressive Integrated Moving Average (Continuous Series)",
+      "model_family": "TIME_SERIES",
+      "mae": 1409.47,
+      "rmse": 1764.88,
+      "r2_score": -0.4833,
+      "smape_pct": 18.03,
+      "mape_pct": 16.4,
+      "directional_accuracy_pct": 50.0,
+      "skill_score_vs_baseline": 26.6,
+      "residual_diagnostics": {
+        "mean_residual": 931.98,
+        "std_residual": 1498.74,
+        "residual_skewness": 0.193
+      }
+    }
+  },
+  "incremental_macro_economic_value": {
+    "local_only_time_trend_mae": 1319.63,
+    "macro_extended_champion_mae": 1350.73,
+    "macro_incremental_accuracy_gain_pct": -2.4,
+    "conclusion": "Incorporating macroeconomic drivers (Repo rate, WALR, Housing Credit, CPI) reduces forecast error by -2.4% compared to a local-only time trend."
+  },
+  "feature_importance": {
+    "XGBoost": {
+      "repo_rate": 0.0,
+      "home_loan_walr": 0.0669,
+      "housing_credit_lakh_cr": 0.0,
+      "cpi_housing": 0.0,
+      "bis_hpi": 0.9331
+    },
+    "Random_Forest": {
+      "repo_rate": 0.0,
+      "home_loan_walr": 0.0146,
+      "housing_credit_lakh_cr": 0.0233,
+      "cpi_housing": 0.0355,
+      "bis_hpi": 0.9265
+    },
+    "Gradient_Boosting": {
+      "repo_rate": 0.0,
+      "home_loan_walr": 0.0029,
+      "housing_credit_lakh_cr": 0.0042,
+      "cpi_housing": 0.0029,
+      "bis_hpi": 0.9899
+    },
+    "Ridge_Standardized_Weights": {
+      "repo_rate": 0.0,
+      "home_loan_walr": 2.5866,
+      "housing_credit_lakh_cr": -37.5055,
+      "cpi_housing": -100.877,
+      "bis_hpi": 41.9799
+    }
+  },
+  "walk_forward_validation_folds": [
+    {
+      "fold": 1,
+      "train_span": "2018-Q1 to 2024-Q2",
+      "test_span": "2024-Q3 to 2024-Q4",
+      "mae": 1280.4,
+      "rmse": 1420.1
+    },
+    {
+      "fold": 2,
+      "train_span": "2018-Q1 to 2024-Q4",
+      "test_span": "2025-Q1 to 2025-Q2",
+      "mae": 1310.2,
+      "rmse": 1490.5
+    },
+    {
+      "fold": 3,
+      "train_span": "2018-Q1 to 2025-Q2",
+      "test_span": "2025-Q3 to 2026-Q3",
+      "mae": 1349.0,
+      "rmse": 1596.9
+    }
+  ]
+}

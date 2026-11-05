@@ -1,0 +1,12 @@
+{
+  "source_name": "World_Bank_Gold_Monthly_CSV",
+  "filename": "world_bank_gold_monthly_raw.csv",
+  "collected_at_utc": "2026-11-05T05:07:14.124405+00:00",
+  "file_size_bytes": 11775,
+  "metadata": {
+    "total_records": 780,
+    "earliest_period": "1960M01",
+    "latest_period": "2024M12",
+    "unit": "USD per troy ounce"
+  }
+}
