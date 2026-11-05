@@ -153,4 +153,23 @@ class GoldApiClient {
 }
 
 export const goldApi = new GoldApiClient();
+
+export type DashboardBundle = {
+  intelligence: GoldIntelligenceResponse | null;
+  history: GoldHistoryResponse | null;
+  forecast: GoldForecastResponse | null;
+  metrics: GoldMetricsResponse | null;
+  risk: GoldRiskResponse | null;
+  scenarios: GoldScenariosResponse | null;
+  uncertainty: GoldUncertaintyResponse | null;
+  macro: GoldMacroResponse | null;
+  trends?: GoldTrendsResponse | null;
+  regimeHistory?: GoldRegimeHistoryResponse | null;
+  timestamp: string;
+};
+
+export const fetchDashboardBundle = async (): Promise<DashboardBundle> => {
+  return (await goldApi.fetchDashboardBundle()) as DashboardBundle;
+};
+
 export default goldApi;

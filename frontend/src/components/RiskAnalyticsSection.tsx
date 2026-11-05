@@ -5,13 +5,13 @@ import { GoldRiskResponse } from "../types/gold";
 
 interface RiskAnalyticsSectionProps {
   riskData: GoldRiskResponse | null;
-  loading: boolean;
+  loading?: boolean;
   error?: string | null;
 }
 
 export const RiskAnalyticsSection: React.FC<RiskAnalyticsSectionProps> = ({
   riskData,
-  loading,
+  loading = false,
   error,
 }) => {
   if (loading) {

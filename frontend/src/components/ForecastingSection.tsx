@@ -6,7 +6,7 @@ import { GoldForecastResponse, GoldMetricsResponse } from "../types/gold";
 interface ForecastingSectionProps {
   forecastData: GoldForecastResponse | null;
   metricsData: GoldMetricsResponse | null;
-  loading: boolean;
+  loading?: boolean;
   error?: string | null;
 }
 
@@ -28,7 +28,7 @@ interface HorizonGuidance {
 export const ForecastingSection: React.FC<ForecastingSectionProps> = ({
   forecastData,
   metricsData,
-  loading,
+  loading = false,
   error,
 }) => {
   const [selectedHorizon, setSelectedHorizon] = useState<number>(90);

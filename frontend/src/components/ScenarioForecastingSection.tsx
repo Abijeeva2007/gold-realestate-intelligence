@@ -4,16 +4,19 @@ import React, { useState } from "react";
 import { GoldScenariosResponse } from "../types/gold";
 
 interface ScenarioForecastingSectionProps {
-  scenarioData: GoldScenariosResponse | null;
-  loading: boolean;
+  scenarioData?: GoldScenariosResponse | null;
+  scenariosData?: GoldScenariosResponse | null;
+  loading?: boolean;
   error?: string | null;
 }
 
 export const ScenarioForecastingSection: React.FC<ScenarioForecastingSectionProps> = ({
   scenarioData,
-  loading,
+  scenariosData,
+  loading = false,
   error,
 }) => {
+  const activeData = scenarioData || scenariosData || null;
   const [activeScenario, setActiveScenario] = useState<"bullish" | "base" | "bearish">("base");
 
   if (loading) {
@@ -24,7 +27,7 @@ export const ScenarioForecastingSection: React.FC<ScenarioForecastingSectionProp
     );
   }
 
-  if (error || !scenarioData) {
+  if (error || !activeData) {
     return (
       <div style={{ padding: "1rem", background: "rgba(239, 68, 68, 0.1)", border: "1px solid #ef4444", borderRadius: "8px", color: "#ef4444", marginBottom: "2rem" }}>
         ⚠️ Unable to load scenarios: {error || "No scenario records returned."}
@@ -32,7 +35,7 @@ export const ScenarioForecastingSection: React.FC<ScenarioForecastingSectionProp
     );
   }
 
-  const scenarios = scenarioData.scenario_forecasts.scenarios;
+  const scenarios = activeData.scenario_forecasts.scenarios;
   const current = scenarios[activeScenario];
 
   return (
@@ -106,7 +109,7 @@ export const ScenarioForecastingSection: React.FC<ScenarioForecastingSectionProp
         color: "#94a3b8",
         marginBottom: "1rem"
       }}>
-        <strong>METHODOLOGY AUDIT DISCLAIMER:</strong> {scenarioData.scenario_forecasts.audit_disclaimer}
+        <strong>METHODOLOGY AUDIT DISCLAIMER:</strong> {activeData.scenario_forecasts.audit_disclaimer}
       </div>
 
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))", gap: "1rem" }}>

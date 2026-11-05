@@ -1,30 +1,33 @@
 "use client";
 
 import React, { useState, useMemo } from "react";
-import { GoldHistoryRecord } from "../types/gold";
+import { GoldHistoryRecord, GoldHistoryResponse } from "../types/gold";
 
 interface GoldPriceAnalysisProps {
-  history: GoldHistoryRecord[];
-  loading: boolean;
+  history?: GoldHistoryRecord[];
+  historyData?: GoldHistoryResponse | null;
+  loading?: boolean;
   error?: string | null;
 }
 
-export const GoldPriceAnalysis: React.FC<GoldPriceAnalysisProps> = ({ history, loading, error }) => {
+export const GoldPriceAnalysis: React.FC<GoldPriceAnalysisProps> = ({ history, historyData, loading = false, error }) => {
   const [timeRange, setTimeRange] = useState<"1M" | "3M" | "6M" | "1Y" | "5Y" | "MAX">("1Y");
   const [showSMA50, setShowSMA50] = useState(true);
   const [showSMA200, setShowSMA200] = useState(true);
   const [viewMetric, setViewMetric] = useState<"USD" | "INR_PARITY" | "DRAWDOWN">("USD");
 
+  const rawRecords = history || historyData?.data || [];
+
   // Chronologically filter dataset
   const filteredData = useMemo(() => {
-    if (!history || history.length === 0) return [];
-    const sorted = [...history].sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
+    if (!rawRecords || rawRecords.length === 0) return [];
+    const sorted = [...rawRecords].sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
 
     if (timeRange === "MAX") return sorted;
     const daysMap = { "1M": 30, "3M": 90, "6M": 180, "1Y": 365, "5Y": 365 * 5 };
     const sliceCount = Math.min(daysMap[timeRange], sorted.length);
     return sorted.slice(-sliceCount);
-  }, [history, timeRange]);
+  }, [rawRecords, timeRange]);
 
   // Compute SMAs dynamically for overlay
   const processedSeries = useMemo(() => {

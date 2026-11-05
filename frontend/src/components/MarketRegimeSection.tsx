@@ -5,13 +5,15 @@ import { GoldTrendsResponse } from "../types/gold";
 
 interface MarketRegimeSectionProps {
   trendsData: GoldTrendsResponse | null;
-  loading: boolean;
+  regimeHistoryData?: any;
+  loading?: boolean;
   error?: string | null;
 }
 
 export const MarketRegimeSection: React.FC<MarketRegimeSectionProps> = ({
   trendsData,
-  loading,
+  regimeHistoryData,
+  loading = false,
   error,
 }) => {
   if (loading) {
