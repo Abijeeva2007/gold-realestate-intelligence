@@ -134,6 +134,90 @@ export default function DashboardPage() {
             </div>
           )}
 
+          {/* ================= INTERACTIVE DUAL-TERMINAL SELECTOR GATEWAY ================= */}
+          <div className="bg-white border-2 border-[#B08D45] rounded-xl p-5 md:p-6 shadow-sm">
+            <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-3 pb-4 border-b border-[#E2DDD2]">
+              <div>
+                <span className="text-[11px] uppercase font-mono tracking-wider font-bold text-[#B08D45]">
+                  PORTAL GATEWAY • SELECT YOUR TERMINAL
+                </span>
+                <h2 className="text-xl md:text-2xl font-bold font-serif text-[#263C32] mt-0.5">
+                  Which Intelligence Terminal Would You Like to Explore?
+                </h2>
+                <p className="text-xs text-[#829184] mt-0.5">
+                  Click an option below to immediately navigate between Gold Market Intelligence and Tamil Nadu Real Estate.
+                </p>
+              </div>
+              <div className="flex items-center gap-2 font-mono text-xs text-[#263C32] bg-[#F5F1E8] px-3 py-1.5 rounded-full border border-[#E2DDD2] flex-shrink-0">
+                <span className="w-2 h-2 rounded-full bg-[#2E7D32] animate-pulse"></span>
+                <span>2 Active Intelligence Modules</span>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-5">
+              {/* Option 1: Gold Market Intelligence Terminal */}
+              <div
+                onClick={() => {
+                  document.getElementById('overview')?.scrollIntoView({ behavior: 'smooth' });
+                }}
+                className="cursor-pointer border-2 border-[#263C32] bg-[#FCFAF6] hover:bg-white rounded-lg p-5 transition shadow-sm relative group"
+              >
+                <div className="absolute top-3 right-3 text-[10px] font-mono font-bold bg-[#263C32] text-white px-2 py-0.5 rounded">
+                  CURRENTLY VIEWING
+                </div>
+                <div className="flex items-center gap-3 mb-2">
+                  <span className="text-2xl p-2 bg-[#F5F1E8] rounded-md border border-[#E2DDD2]">🏆</span>
+                  <div>
+                    <h3 className="text-base font-bold text-[#263C32] group-hover:text-[#B08D45] transition">
+                      Gold Price Intelligence Terminal
+                    </h3>
+                    <span className="text-xs font-mono text-[#829184]">Macro Bullion & Jewellery Forecasts</span>
+                  </div>
+                </div>
+                <ul className="text-xs text-[#556058] space-y-1 mb-4 pl-1">
+                  <li>• <strong>Ground-Reality Benchmark:</strong> ₹13,385/g, ₹1,07,080 / 1 Sovereign (8g 22K)</li>
+                  <li>• <strong>Showroom Price Calculator:</strong> Base gold + Wastage/VA + 3% GST</li>
+                  <li>• <strong>Multi-Horizon Forecasts:</strong> 30d, 90d (wedding advisory), 180d, 365d</li>
+                </ul>
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    document.getElementById('overview')?.scrollIntoView({ behavior: 'smooth' });
+                  }}
+                  className="w-full py-2 bg-[#263C32] text-white rounded text-xs font-mono font-bold hover:bg-[#1C2C25] transition flex items-center justify-center gap-1.5"
+                >
+                  <span>Explore Gold Terminal Sections</span>
+                  <span>↓</span>
+                </button>
+              </div>
+
+              {/* Option 2: Tamil Nadu Real Estate Terminal */}
+              <a
+                href="/real-estate-dashboard"
+                className="border-2 border-[#B08D45] bg-[#FFFFFF] hover:bg-[#FCFAF6] rounded-lg p-5 transition shadow-sm group block text-left no-underline"
+              >
+                <div className="flex items-center gap-3 mb-2">
+                  <span className="text-2xl p-2 bg-[#F5F1E8] rounded-md border border-[#E2DDD2]">🏛️</span>
+                  <div>
+                    <h3 className="text-base font-bold text-[#263C32] group-hover:text-[#B08D45] transition">
+                      Tamil Nadu Real Estate Terminal
+                    </h3>
+                    <span className="text-xs font-mono text-[#B08D45] font-bold">Includes Kanniyakumari & 38 Districts</span>
+                  </div>
+                </div>
+                <ul className="text-xs text-[#556058] space-y-1 mb-4 pl-1">
+                  <li>• <strong>Statewide 38 Districts:</strong> Chennai, Coimbatore to Kanniyakumari</li>
+                  <li>• <strong>Guideline vs Market Spreads:</strong> TNREGINET statutory values & trends</li>
+                  <li>• <strong>Multi-Horizon Forecasts:</strong> +7.8% (12M) & +16.2% (24M) appreciation</li>
+                </ul>
+                <div className="w-full py-2 bg-[#B08D45] text-white rounded text-xs font-mono font-bold hover:bg-[#8E6F30] transition flex items-center justify-center gap-1.5 text-center">
+                  <span>Go to Real Estate Terminal</span>
+                  <span>➔</span>
+                </div>
+              </a>
+            </div>
+          </div>
+
           {/* ================= 1. MARKET OVERVIEW ================= */}
           <section id="overview" className="scroll-mt-20">
             <MarketOverview intelligence={data?.intelligence || null} />
