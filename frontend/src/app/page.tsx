@@ -35,7 +35,7 @@ export default function GatewayPage() {
             </span>
             <div>
               <h1 style={{ margin: 0, fontSize: '1.1rem', fontWeight: 700, color: '#FFFFFF' }}>
-                Global Gold & Tamil Nadu Real Estate Intelligence Platform
+                Global Gold & USA Real Estate Intelligence Platform
               </h1>
               <p style={{ margin: 0, fontSize: '0.75rem', color: '#D8C396', fontFamily: 'monospace' }}>
                 Production Intelligence Gateway • Institutional & Empirical Decision Systems
@@ -84,8 +84,8 @@ export default function GatewayPage() {
               display: 'flex',
               gap: '0.5rem'
             }}>
-              <span style={{ color: '#829184' }}>TN DISTRICTS:</span>
-              <span style={{ fontWeight: 700, color: '#2E6B4F' }}>38 Complete</span>
+              <span style={{ color: '#829184' }}>US MEDIAN:</span>
+              <span style={{ fontWeight: 700, color: '#2E6B4F' }}>$420,400 (30Y: 6.65%)</span>
             </div>
           </div>
         </div>
@@ -280,10 +280,10 @@ export default function GatewayPage() {
             </a>
           </div>
 
-          {/* Card 2: Tamil Nadu Real Estate Intelligence */}
+          {/* Card 2: USA Real Estate Intelligence */}
           <div style={{
             backgroundColor: '#FFFFFF',
-            border: '2px solid #263C32',
+            border: '2px solid #1E2D3D',
             borderRadius: '16px',
             padding: '2rem',
             boxShadow: '0 4px 12px rgba(0,0,0,0.06)',
@@ -297,7 +297,7 @@ export default function GatewayPage() {
               position: 'absolute',
               top: 0,
               right: 0,
-              backgroundColor: '#263C32',
+              backgroundColor: '#1E2D3D',
               color: '#FFFFFF',
               fontSize: '0.7rem',
               fontFamily: 'monospace',
@@ -305,15 +305,15 @@ export default function GatewayPage() {
               padding: '0.25rem 0.75rem',
               borderBottomLeftRadius: '8px'
             }}>
-              38 DISTRICTS
+              FRED • CASE-SHILLER • NAR
             </div>
 
             <div>
               <div style={{
                 width: '56px',
                 height: '56px',
-                backgroundColor: '#EBF3EE',
-                border: '1px solid #263C32',
+                backgroundColor: '#EBF2F8',
+                border: '1px solid #1B4D7E',
                 borderRadius: '12px',
                 display: 'flex',
                 alignItems: 'center',
@@ -321,13 +321,13 @@ export default function GatewayPage() {
                 fontSize: '1.75rem',
                 marginBottom: '1.25rem'
               }}>
-                🏛️
+                🇺🇸
               </div>
-              <h3 style={{ fontSize: '1.4rem', fontWeight: 700, color: '#263C32', margin: '0 0 0.25rem' }}>
-                Tamil Nadu Real Estate Terminal
+              <h3 style={{ fontSize: '1.4rem', fontWeight: 700, color: '#1E2D3D', margin: '0 0 0.25rem' }}>
+                USA Real Estate Intelligence Terminal
               </h3>
               <p style={{ fontSize: '0.75rem', fontFamily: 'monospace', color: '#829184', margin: '0 0 1rem' }}>
-                Statutory Guideline Values • Market Spreads • Price Predictions & Investment
+                Case-Shiller Home Price Index • Top 20 Metros • PITI Mortgage & Forecasts
               </p>
 
               <div style={{
@@ -343,16 +343,16 @@ export default function GatewayPage() {
                 gap: '0.4rem'
               }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                  <span style={{ color: '#647068' }}>Geographic Scope:</span>
-                  <span style={{ fontWeight: 700, fontFamily: 'monospace', color: '#263C32' }}>All 38 Districts (incl. Kanniyakumari)</span>
+                  <span style={{ color: '#647068' }}>US Median Home Price:</span>
+                  <span style={{ fontWeight: 700, fontFamily: 'monospace', color: '#1E2D3D' }}>$420,400 ($228/sq.ft)</span>
                 </div>
                 <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                   <span style={{ color: '#647068' }}>12-Month Price Projection:</span>
-                  <span style={{ fontWeight: 800, fontFamily: 'monospace', color: '#2E6B4F' }}>+7.8% Growth</span>
+                  <span style={{ fontWeight: 800, fontFamily: 'monospace', color: '#2E6B4F' }}>+4.6% Growth</span>
                 </div>
                 <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                  <span style={{ color: '#647068' }}>Total Investment ROI (CAGR):</span>
-                  <span style={{ fontWeight: 700, fontFamily: 'monospace', color: '#B08D45' }}>11.5% – 12.0%</span>
+                  <span style={{ color: '#647068' }}>30-Year Fixed Mortgage:</span>
+                  <span style={{ fontWeight: 700, fontFamily: 'monospace', color: '#1B4D7E' }}>6.65% (Eased from 7.79%)</span>
                 </div>
               </div>
 
@@ -367,20 +367,20 @@ export default function GatewayPage() {
                 gap: '0.5rem'
               }}>
                 <li style={{ display: 'flex', gap: '0.5rem' }}>
-                  <span style={{ color: '#263C32', fontWeight: 'bold' }}>✓</span>
-                  <span><strong>Full 38 District Rankings:</strong> Chennai, Coimbatore, Madurai to Kanniyakumari (Nagercoil, Cape Road).</span>
+                  <span style={{ color: '#1B4D7E', fontWeight: 'bold' }}>✓</span>
+                  <span><strong>Case-Shiller Trend Charts:</strong> 2015–2026 historical series with 3Y, 5Y, and 10Y filters.</span>
                 </li>
                 <li style={{ display: 'flex', gap: '0.5rem' }}>
-                  <span style={{ color: '#263C32', fontWeight: 'bold' }}>✓</span>
-                  <span><strong>Statutory vs Market Spreads:</strong> TNREGINET guideline benchmarks & transaction multiples.</span>
+                  <span style={{ color: '#1B4D7E', fontWeight: 'bold' }}>✓</span>
+                  <span><strong>Top 20 US Metro Rankings:</strong> New York, LA, San Francisco, Miami, Austin, Seattle, Dallas, Atlanta.</span>
                 </li>
                 <li style={{ display: 'flex', gap: '0.5rem' }}>
-                  <span style={{ color: '#263C32', fontWeight: 'bold' }}>✓</span>
-                  <span><strong>Price Forecasts:</strong> Multi-horizon 12M (+7.8%) and 24M (+16.2%) appreciation projections.</span>
+                  <span style={{ color: '#1B4D7E', fontWeight: 'bold' }}>✓</span>
+                  <span><strong>PITI Mortgage & Valuation Calculator:</strong> Principal, Interest, Property Taxes, Insurance & rental yield.</span>
                 </li>
                 <li style={{ display: 'flex', gap: '0.5rem' }}>
-                  <span style={{ color: '#263C32', fontWeight: 'bold' }}>✓</span>
-                  <span><strong>Interactive Valuation Calculator:</strong> Instant sq.ft and total property valuation by locality.</span>
+                  <span style={{ color: '#1B4D7E', fontWeight: 'bold' }}>✓</span>
+                  <span><strong>Investment & Cap Rate Advisory:</strong> Sunbelt (5.5%–6.5%) vs Coastal MSAs (3.5%–4.5%).</span>
                 </li>
               </ul>
             </div>
@@ -394,7 +394,7 @@ export default function GatewayPage() {
                 gap: '0.5rem',
                 width: '100%',
                 padding: '0.85rem',
-                backgroundColor: '#263C32',
+                backgroundColor: '#1E2D3D',
                 color: '#FFFFFF',
                 fontFamily: 'monospace',
                 fontWeight: 700,
@@ -406,7 +406,7 @@ export default function GatewayPage() {
                 textAlign: 'center'
               }}
             >
-              <span>Launch Real Estate Terminal</span>
+              <span>Launch USA Real Estate Terminal</span>
               <span>➔</span>
             </a>
           </div>

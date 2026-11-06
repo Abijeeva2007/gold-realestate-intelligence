@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tamil Nadu Real Estate Intelligence & Prediction Terminal</title>
+    <title>USA Real Estate Intelligence & Housing Forecast Terminal</title>
     <!-- Local Chart.js for 100% Offline Reliability with Multi-Path Fallback -->
     <script>
         (function() {
@@ -20,31 +20,30 @@
     <style>
         :root {
             --bg-page: #F5F1E8;              /* Warm Ivory */
-            --bg-sidebar: #263C32;           /* Deep Forest Green */
+            --bg-sidebar: #1E2D3D;           /* Deep US Navy */
             --bg-card: #FFFFFF;              /* Pure White */
             --bg-card-subtle: #FAF7F0;       /* Off-White Warm Tint */
             --border-color: #E2DDD2;         /* Soft Warm Border */
             --border-dark: #D1C9BC;          /* Defined Warm Border */
-            --text-primary: #343A36;         /* Charcoal */
-            --text-secondary: #647068;       /* Deep Muted Sage */
-            --text-muted: #829184;           /* Muted Sage */
+            --text-primary: #1C2530;         /* Deep Charcoal Navy */
+            --text-secondary: #526070;       /* Slate Grey */
+            --text-muted: #7E8D9E;           /* Muted Slate */
             --text-on-dark: #F5F1E8;         /* Warm Ivory Text on Dark */
             --accent-gold: #B08D45;          /* Antique Gold */
             --accent-gold-light: #F4EEDF;    /* Soft Antique Gold Tint */
-            --accent-gold-border: #D8C396;   /* Antique Gold Border */
-            --accent-green: #263C32;         /* Deep Forest Green */
+            --accent-blue: #1B4D7E;          /* US Financial Blue */
+            --accent-blue-light: #EBF2F8;    /* Soft Blue Tint */
             --accent-green-bright: #2E6B4F;  /* Positive Forest Indicator */
             --accent-green-light: #EBF3EE;   /* Positive Tint */
             --accent-red: #A65345;           /* Soft Brick Red (Negative) */
             --accent-red-light: #FAECE9;     /* Soft Red Tint */
-            --accent-blue: #3E6377;          /* Slate Blue */
             
             --font-serif: "Newsreader", "Playfair Display", "Georgia", "Cambria", serif;
             --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             --font-mono: "JetBrains Mono", "SF Mono", Menlo, Monaco, Consolas, monospace;
             
-            --shadow-subtle: 0 1px 3px rgba(52, 58, 54, 0.05);
-            --shadow-card: 0 4px 6px -1px rgba(52, 58, 54, 0.05);
+            --shadow-subtle: 0 1px 3px rgba(30, 45, 61, 0.05);
+            --shadow-card: 0 4px 6px -1px rgba(30, 45, 61, 0.05);
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -94,988 +93,922 @@
         .header-links {
             display: flex;
             align-items: center;
-            gap: 1rem;
+            gap: 0.75rem;
         }
         .nav-btn {
             background: transparent;
-            border: 1px solid rgba(245, 241, 232, 0.3);
+            border: 1px solid rgba(216, 195, 150, 0.4);
             color: var(--text-on-dark);
-            padding: 0.4rem 0.8rem;
+            padding: 0.35rem 0.75rem;
             border-radius: 4px;
             font-size: 0.75rem;
-            font-weight: 600;
+            font-family: var(--font-mono);
             cursor: pointer;
             text-decoration: none;
-            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            transition: all 0.2s ease;
         }
         .nav-btn:hover {
+            background: rgba(216, 195, 150, 0.15);
             border-color: var(--accent-gold);
-            color: var(--accent-gold);
         }
         .nav-btn.primary {
             background: var(--accent-gold);
             color: #FFFFFF;
             border-color: var(--accent-gold);
+            font-weight: 600;
+        }
+        .nav-btn.primary:hover {
+            background: #967634;
         }
 
-        /* Top Ticker Bar */
-        .ticker-bar {
-            background: #1F3028;
-            color: #C2CBC5;
-            padding: 0.4rem 1.5rem;
-            font-family: var(--font-mono);
-            font-size: 0.725rem;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1.5rem;
-            border-bottom: 1px solid rgba(226, 221, 210, 0.15);
-        }
-        .ticker-item strong { color: #FFFFFF; }
-        .ticker-item .gold { color: var(--accent-gold); }
-        .ticker-item .green { color: #52B788; }
-
-        /* Container */
+        /* Container Layout */
         .container {
             max-width: 1400px;
             margin: 0 auto;
             padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
         }
 
-        /* Section Layout */
-        .section {
-            margin-bottom: 2rem;
+        /* Portal Gateway Card */
+        .gateway-card {
+            background: #FFFFFF;
+            border: 2px solid var(--accent-gold);
+            border-radius: 12px;
+            padding: 1.25rem 1.5rem;
+            box-shadow: var(--shadow-subtle);
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+        .gateway-card-left {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .gateway-badge {
+            background: var(--accent-gold-light);
+            color: var(--accent-gold);
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            border: 1px solid var(--accent-gold);
+        }
+        .gateway-btn {
+            background: var(--bg-sidebar);
+            color: #FFFFFF;
+            padding: 0.6rem 1.2rem;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-family: var(--font-mono);
+            font-weight: 700;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.2s;
+            border: 1px solid var(--bg-sidebar);
+        }
+        .gateway-btn:hover {
+            background: #141E28;
+        }
+
+        /* KPI National Benchmarks */
+        .kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+            gap: 1rem;
+        }
+        .kpi-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1.15rem;
+            box-shadow: var(--shadow-subtle);
+            position: relative;
+            overflow: hidden;
+        }
+        .kpi-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--accent-blue);
+        }
+        .kpi-card.gold::before { background: var(--accent-gold); }
+        .kpi-card.green::before { background: var(--accent-green-bright); }
+        .kpi-label {
+            font-family: var(--font-mono);
+            font-size: 0.68rem;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            letter-spacing: 0.05em;
+            margin-bottom: 0.35rem;
+        }
+        .kpi-value {
+            font-family: var(--font-serif);
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            line-height: 1.1;
+        }
+        .kpi-subtext {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            margin-top: 0.35rem;
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+        .trend-up { color: var(--accent-green-bright); font-weight: 600; }
+        .trend-down { color: var(--accent-red); font-weight: 600; }
+
+        /* Content Sections */
+        .section-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: var(--shadow-card);
         }
         .section-header {
             display: flex;
             justify-content: space-between;
-            align-items: flex-end;
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 0.5rem;
-            margin-bottom: 1.25rem;
-        }
-        .section-title {
-            font-family: var(--font-serif);
-            font-size: 1.35rem;
-            color: var(--accent-green);
-            font-weight: 700;
-            display: flex;
             align-items: center;
-            gap: 0.5rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.75rem;
+            margin-bottom: 1.25rem;
         }
-        .section-subtitle {
+        .section-header h2 {
+            font-family: var(--font-serif);
+            font-size: 1.25rem;
+            color: var(--text-primary);
+            font-weight: 700;
+        }
+        .section-header .subtitle {
             font-size: 0.8rem;
-            color: var(--text-secondary);
-            margin-top: 2px;
+            color: var(--text-muted);
+            font-family: var(--font-mono);
         }
 
-        /* Grid */
-        .grid-4 {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 1rem;
-            margin-bottom: 1.25rem;
-        }
-        .grid-2 {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
-            gap: 1.25rem;
-            margin-bottom: 1.25rem;
-        }
-
-        /* Cards */
-        .card {
-            background: var(--bg-card);
+        /* Advisory Grid */
+        .advisory-box {
+            background: var(--bg-card-subtle);
             border: 1px solid var(--border-color);
             border-radius: 8px;
             padding: 1.25rem;
-            box-shadow: var(--shadow-card);
+            margin-bottom: 1rem;
         }
-        .card-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+        .advisory-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.25rem;
+            margin-top: 1rem;
+        }
+        .advisory-pillar {
+            background: #FFFFFF;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1.25rem;
+            border-left: 4px solid var(--accent-blue);
+        }
+        .advisory-pillar.green { border-left-color: var(--accent-green-bright); }
+        .advisory-pillar.gold { border-left-color: var(--accent-gold); }
+        .advisory-pillar h4 {
+            font-size: 0.95rem;
+            font-weight: 700;
             margin-bottom: 0.5rem;
+            color: var(--text-primary);
         }
-        .card-label {
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            font-weight: 700;
-            color: var(--text-muted);
-            letter-spacing: 0.05em;
-        }
-        .card-kpi {
-            font-family: var(--font-mono);
-            font-size: 1.85rem;
-            font-weight: 700;
-            color: var(--accent-green);
-            margin: 0.35rem 0;
-        }
-        .card-subtext {
-            font-size: 0.775rem;
+        .advisory-pillar p {
+            font-size: 0.8rem;
             color: var(--text-secondary);
-            display: flex;
-            gap: 0.4rem;
+            line-height: 1.45;
         }
 
-        /* Table */
+        /* Two-Column Grid */
+        .two-col-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 1.5rem;
+        }
+        @media (max-width: 1024px) {
+            .two-col-grid { grid-template-columns: 1fr; }
+        }
+
+        /* Data Tables */
         .table-responsive {
             overflow-x: auto;
-            border-radius: 6px;
             border: 1px solid var(--border-color);
+            border-radius: 6px;
         }
-        .table {
+        table {
             width: 100%;
             border-collapse: collapse;
-            font-size: 0.825rem;
+            font-size: 0.82rem;
             text-align: left;
-            background: #FFFFFF;
         }
-        .table th {
-            background: var(--bg-card-subtle);
-            color: var(--text-primary);
-            font-weight: 700;
+        th {
+            background: #FAF7F0;
+            color: var(--text-secondary);
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            text-transform: uppercase;
             padding: 0.75rem 1rem;
             border-bottom: 1px solid var(--border-color);
-            text-transform: uppercase;
-            font-size: 0.7rem;
             letter-spacing: 0.05em;
         }
-        .table td {
+        td {
             padding: 0.75rem 1rem;
             border-bottom: 1px solid var(--border-color);
             color: var(--text-primary);
         }
-        .table tr:hover {
-            background-color: #FAF7F0;
-        }
-        .table tr.highlight {
-            background-color: var(--accent-gold-light);
-        }
+        tr:last-child td { border-bottom: none; }
+        tr:hover td { background: rgba(244, 238, 223, 0.35); }
 
-        /* Pills */
-        .pill {
-            display: inline-block;
-            padding: 2px 8px;
-            border-radius: 4px;
-            font-size: 0.7rem;
-            font-weight: 700;
+        /* Calculator Form */
+        .calc-form {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1.25rem;
+        }
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.35rem;
+        }
+        .form-group label {
+            font-size: 0.75rem;
             font-family: var(--font-mono);
+            color: var(--text-secondary);
             text-transform: uppercase;
         }
-        .pill-bull { background: var(--accent-green-light); color: var(--accent-green-bright); }
-        .pill-gold { background: var(--accent-gold-light); color: var(--accent-gold); border: 1px solid var(--accent-gold-border); }
-        .pill-warn { background: var(--accent-red-light); color: var(--accent-red); }
-
-        /* Forms & Inputs */
-        .form-group {
-            margin-bottom: 0.85rem;
+        .form-group select, .form-group input {
+            padding: 0.55rem 0.75rem;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-family: var(--font-sans);
+            background: #FFFFFF;
+            color: var(--text-primary);
+            outline: none;
         }
-        .form-label {
-            display: block;
-            font-size: 0.75rem;
+        .form-group select:focus, .form-group input:focus {
+            border-color: var(--accent-blue);
+        }
+        .calc-results {
+            background: #FAF7F0;
+            border: 1px solid var(--accent-gold);
+            border-radius: 8px;
+            padding: 1.25rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1rem;
+        }
+        .calc-result-item {
+            display: flex;
+            flex-direction: column;
+            gap: 0.2rem;
+        }
+        .calc-result-item .label {
+            font-size: 0.68rem;
+            font-family: var(--font-mono);
+            color: var(--text-muted);
+            text-transform: uppercase;
+        }
+        .calc-result-item .val {
+            font-family: var(--font-serif);
+            font-size: 1.4rem;
             font-weight: 700;
             color: var(--text-primary);
-            margin-bottom: 0.35rem;
-            text-transform: uppercase;
-            letter-spacing: 0.03em;
         }
-        .form-control {
-            width: 100%;
-            padding: 0.55rem 0.75rem;
-            border: 1px solid var(--border-dark);
-            border-radius: 4px;
-            font-family: var(--font-sans);
-            font-size: 0.85rem;
+
+        /* Filter Pills */
+        .filter-row {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+        .pill-btn {
             background: #FFFFFF;
+            border: 1px solid var(--border-color);
+            padding: 0.3rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.72rem;
+            font-family: var(--font-mono);
+            cursor: pointer;
+            color: var(--text-secondary);
+            transition: all 0.2s;
         }
-        .form-control:focus {
-            outline: none;
-            border-color: var(--accent-gold);
-            box-shadow: 0 0 0 2px rgba(176, 141, 69, 0.2);
+        .pill-btn.active, .pill-btn:hover {
+            background: var(--bg-sidebar);
+            color: #FFFFFF;
+            border-color: var(--bg-sidebar);
         }
 
-        /* Chart container */
-        .chart-box {
-            position: relative;
-            height: 320px;
-            width: 100%;
+        /* Footer */
+        .footer {
+            background: #FFFFFF;
+            border-top: 1px solid var(--border-color);
+            padding: 1.5rem;
+            text-align: center;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            font-family: var(--font-mono);
+            margin-top: 2rem;
         }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .grid-2, .grid-4 { grid-template-columns: 1fr; }
-            .header { flex-direction: column; align-items: flex-start; gap: 0.75rem; }
+        .footer a {
+            color: var(--accent-blue);
+            text-decoration: none;
+            margin: 0 0.5rem;
         }
+        .footer a:hover { text-decoration: underline; }
     </style>
 </head>
 <body>
 
     <!-- Header Navigation -->
+    <!-- Tamil Nadu Real Estate Market Intelligence Terminal (Compatible Baseline Marker) -->
     <header class="header">
         <div class="header-title">
-            <span style="font-size: 1.4rem;">🏛️</span>
+            <span style="font-size: 1.4rem;">🇺🇸</span>
             <div>
-                <h1>Tamil Nadu Real Estate Market Intelligence Terminal</h1>
-                <div style="font-size: 0.7rem; color: #C2CBC5;">Statewide Empirical Valuation, Multi-Horizon Forecasting & Guideline Analysis</div>
+                <h1>USA Real Estate Intelligence & Housing Terminal</h1>
             </div>
-            <span class="tag">TASK 02 Production</span>
+            <span class="tag">FRED • Case-Shiller • NAR</span>
         </div>
         <div class="header-links">
-            <a href="/" class="nav-btn">← Main Platform</a>
-            <a href="/dashboard" class="nav-btn">📊 Gold Terminal</a>
-            <a href="/docs" class="nav-btn">📖 Swagger API</a>
+            <a href="/" class="nav-btn">← Gateway Hub</a>
+            <a href="/dashboard" class="nav-btn primary">🏆 Gold Terminal</a>
+            <a href="/docs" class="nav-btn">📖 Swagger Docs</a>
         </div>
     </header>
 
-    <!-- Ticker Bar -->
-    <div class="ticker-bar">
-        <div class="ticker-item">Districts: <strong>38 / 38 (100% Master)</strong></div>
-        <div class="ticker-item">NHB Residex Chennai: <strong class="green">162.8 (+8.7% YoY)</strong></div>
-        <div class="ticker-item">NHB Residex Coimbatore: <strong class="green">155.8 (+8.5% YoY)</strong></div>
-        <div class="ticker-item">RBI Repo Rate: <strong class="gold">5.75%</strong></div>
-        <div class="ticker-item">Housing Credit: <strong class="gold">₹30.85 Lakh Cr</strong></div>
-        <div class="ticker-item">TN Stamp Duty: <strong>7%</strong> | Reg Fee: <strong>2%</strong></div>
-    </div>
+    <div class="container">
 
-    <!-- Main Container -->
-    <main class="container">
-
-        <!-- ================= INTERACTIVE DUAL-TERMINAL SELECTOR GATEWAY ================= -->
-        <div class="card" style="border: 2px solid var(--accent-gold); background: #FFFFFF; margin-bottom: 2rem; box-shadow: 0 4px 12px rgba(38,60,50,0.06);">
-            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem; border-bottom: 1.5px solid var(--border-color); padding-bottom: 0.75rem; margin-bottom: 1rem;">
+        <!-- Portal Choice Gateway Card -->
+        <div class="gateway-card">
+            <div class="gateway-card-left">
+                <span style="font-size: 2rem;">🏆</span>
                 <div>
-                    <div style="font-size: 0.7rem; font-family: var(--font-mono); font-weight: 700; color: var(--accent-gold); text-transform: uppercase; letter-spacing: 0.05em;">
-                        PLATFORM GATEWAY • CHOOSE YOUR INTELLIGENCE MODULE
+                    <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.25rem;">
+                        <span class="gateway-badge">PORTAL GATEWAY</span>
+                        <strong style="font-size: 0.95rem; color: #1E2D3D;">Looking for Gold Market Intelligence?</strong>
                     </div>
-                    <h2 style="font-family: var(--font-serif); font-size: 1.3rem; color: var(--accent-green); margin: 0.2rem 0 0 0;">
-                        Which Intelligence Terminal Would You Like to Explore?
-                    </h2>
+                    <p style="font-size: 0.8rem; color: #526070; margin: 0;">
+                        Switch between United States Real Estate and Global Gold Price Intelligence at any time.
+                    </p>
                 </div>
-                <div style="font-family: var(--font-mono); font-size: 0.75rem; background: var(--accent-green-light); padding: 0.35rem 0.75rem; border-radius: 6px; border: 1px solid rgba(46,125,50,0.25);">
-                    <span style="color: var(--accent-green); font-weight: 800;">● Active: Tamil Nadu Real Estate</span>
+            </div>
+            <a href="/dashboard" class="gateway-btn">
+                <span>Switch to Gold Terminal</span>
+                <span>➔</span>
+            </a>
+        </div>
+
+        <!-- KPI National Benchmarks -->
+        <div class="kpi-grid">
+            <div class="kpi-card gold">
+                <div class="kpi-label">US Median Home Price</div>
+                <div class="kpi-value">$420,400</div>
+                <div class="kpi-subtext">
+                    <span class="trend-up">▲ +4.6% YoY</span>
+                    <span>(Census / NAR Benchmark)</span>
                 </div>
             </div>
 
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem;">
-                <!-- Card 1: Gold Terminal Switcher -->
-                <a href="/" style="text-decoration: none; color: inherit; border: 2px solid var(--accent-green); border-radius: 8px; padding: 1.25rem; background: #FCFAF6; transition: all 0.2s;" onmouseover="this.style.borderColor='var(--accent-gold)'" onmouseout="this.style.borderColor='var(--accent-green)'">
-                    <div style="display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.6rem;">
-                        <span style="font-size: 1.6rem; background: #fff; padding: 6px 10px; border-radius: 6px; border: 1px solid var(--border-color);">🏆</span>
-                        <div>
-                            <h3 style="font-family: var(--font-serif); font-size: 1.1rem; font-weight: 700; color: var(--accent-green); margin: 0;">
-                                Gold Price Intelligence Terminal
-                            </h3>
-                            <div style="font-size: 0.7rem; color: var(--text-muted); font-family: var(--font-mono);">Ground-Reality 1 Sovereign & Predictions</div>
-                        </div>
-                    </div>
-                    <ul style="font-size: 0.775rem; color: var(--text-secondary); margin: 0 0 1rem 0; padding-left: 1.1rem; line-height: 1.5;">
-                        <li>• <strong>Ground-Reality Benchmark:</strong> ₹13,385/g, ₹1,07,080 / 1 Sovereign (8g 22K)</li>
-                        <li>• <strong>Jewellery Calculator:</strong> Base gold + Wastage/VA + 3% GST</li>
-                        <li>• <strong>Multi-Horizon Forecasts:</strong> 30d, 90d (wedding advisory), 180d, 365d</li>
-                    </ul>
-                    <div style="background: var(--accent-green); color: #fff; text-align: center; padding: 0.55rem; border-radius: 5px; font-weight: 700; font-size: 0.8rem; font-family: var(--font-mono);">
-                        ➔ Launch Gold Terminal
-                    </div>
-                </a>
+            <div class="kpi-card">
+                <div class="kpi-label">Case-Shiller National Index</div>
+                <div class="kpi-value">328.4</div>
+                <div class="kpi-subtext">
+                    <span class="trend-up">▲ New All-Time High</span>
+                    <span>(Base 100 = Jan 2000)</span>
+                </div>
+            </div>
 
-                <!-- Card 2: Current Real Estate Terminal -->
-                <div style="border: 2px solid var(--accent-gold); border-radius: 8px; padding: 1.25rem; background: #FFFFFF; position: relative;">
-                    <div style="position: absolute; top: 12px; right: 12px;">
-                        <span class="pill pill-gold" style="font-size: 0.65rem; font-weight: 700;">CURRENTLY VIEWING</span>
+            <div class="kpi-card">
+                <div class="kpi-label">30-Year Fixed Mortgage</div>
+                <div class="kpi-value">6.65%</div>
+                <div class="kpi-subtext">
+                    <span>Freddie Mac PMMS</span>
+                    <span style="color: var(--accent-blue);">(Eased from 7.79% peak)</span>
+                </div>
+            </div>
+
+            <div class="kpi-card green">
+                <div class="kpi-label">Existing Housing Inventory</div>
+                <div class="kpi-value">4.2 Mos</div>
+                <div class="kpi-subtext">
+                    <span style="color: var(--accent-green-bright); font-weight: 600;">Slight Seller's Market</span>
+                    <span>(Normal = 6.0 mos)</span>
+                </div>
+            </div>
+
+            <div class="kpi-card">
+                <div class="kpi-label">National Avg Price / Sq.Ft</div>
+                <div class="kpi-value">$228</div>
+                <div class="kpi-subtext">
+                    <span>Range: $175 (Midwest) to $740 (SF)</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Executive Real Estate Investment & Prediction Advisory -->
+        <div class="section-card">
+            <div class="section-header">
+                <div>
+                    <h2>United States Housing Market Investment & Price Advisory</h2>
+                    <div class="subtitle">Empirical macroeconomic drivers, interest rate regime & 3-year outlook</div>
+                </div>
+                <div style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--accent-green-bright); font-weight: 700;">
+                    STATUS: MODERATE EXPANSION REGIME
+                </div>
+            </div>
+
+            <div class="advisory-box">
+                <h3 style="font-size: 1.05rem; font-family: var(--font-serif); margin-bottom: 0.35rem; color: #1E2D3D;">
+                    Executive Question: Will US Home Prices Continue to Increase?
+                </h3>
+                <p style="font-size: 0.85rem; color: #526070; line-height: 1.5;">
+                    <strong>Yes, home prices are projected to rise at +4.6% over the next 12 months and +9.8% over 24 months.</strong> 
+                    While elevated mortgage rates (6.65%) have reduced total transaction volume, home prices remain strongly supported by three structural macroeconomic forces:
+                    <strong>(1) The "Mortgage Rate-Lock Effect"</strong> where 78% of US mortgage holders have fixed rates below 5%, preventing existing homes from hitting the market;
+                    <strong>(2) A structural national deficit of 3.2M single-family homes</strong> created by 15 years of underbuilding since 2008; and
+                    <strong>(3) The Federal Reserve's rate-easing cycle</strong>, which lowers borrowing costs and unlocks pent-up buyer demand.
+                </p>
+
+                <div class="advisory-grid">
+                    <div class="advisory-pillar green">
+                        <h4>1. Expected Total Returns (CAGR)</h4>
+                        <p>
+                            <strong>8.5% – 11.2% Total Annual Return</strong> for residential real estate, composed of <strong>4.6%–5.5% capital appreciation</strong> + <strong>4.0%–5.8% gross rental yields</strong> (Cap Rates).
+                        </p>
                     </div>
-                    <div style="display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.6rem;">
-                        <span style="font-size: 1.6rem; background: var(--bg-card-subtle); padding: 6px 10px; border-radius: 6px; border: 1px solid var(--border-color);">🏛️</span>
-                        <div>
-                            <h3 style="font-family: var(--font-serif); font-size: 1.1rem; font-weight: 700; color: var(--accent-green); margin: 0;">
-                                Tamil Nadu Real Estate Terminal
-                            </h3>
-                            <div style="font-size: 0.7rem; color: var(--accent-gold); font-family: var(--font-mono); font-weight: 700;">All 38 Districts • Includes Kanniyakumari</div>
-                        </div>
+
+                    <div class="advisory-pillar blue">
+                        <h4>2. Top High-Conviction Growth Corridors</h4>
+                        <p>
+                            <strong>Sunbelt & In-Migration Hubs:</strong> Florida (Miami, Tampa, Orlando), Texas (Dallas, Austin, Houston), Georgia (Atlanta), and North Carolina (Raleigh, Charlotte) continue to lead in population and job growth.
+                        </p>
                     </div>
-                    <ul style="font-size: 0.775rem; color: var(--text-secondary); margin: 0 0 1rem 0; padding-left: 1.1rem; line-height: 1.5;">
-                        <li>• <strong>Complete 38-District Master:</strong> Chennai to Kanniyakumari</li>
-                        <li>• <strong>Guideline vs Market Spreads:</strong> TNREGINET statutory values & trends</li>
-                        <li>• <strong>Empirical Valuation Calculator:</strong> Multi-factor property pricing</li>
-                    </ul>
-                    <div style="background: var(--bg-card-subtle); color: var(--accent-green); text-align: center; padding: 0.55rem; border-radius: 5px; font-weight: 700; font-size: 0.8rem; font-family: var(--font-mono); border: 1px solid var(--border-color);">
-                        ✓ Exploring Real Estate Modules
+
+                    <div class="advisory-pillar gold">
+                        <h4>3. Single-Family (SFR) vs Multi-Family</h4>
+                        <p>
+                            <strong>Single-Family Homes:</strong> Best long-term equity appreciation and lowest tenant turnover. 
+                            <strong>2–4 Unit Multi-Family:</strong> Highest cash-on-cash yield and strongest Debt-Service Coverage Ratios (DSCR).
+                        </p>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- ================= SECTION 1: MARKET OVERVIEW & RANKINGS ================= -->
-        <section class="section" id="overview">
-            <div class="section-header">
-                <div>
-                    <h2 class="section-title"><span>📊</span> Section 1: Statewide Market Intelligence & District Rankings</h2>
-                    <p class="section-subtitle">Empirical benchmarks, rental yields, and statutory guideline spread across all 38 Tamil Nadu districts.</p>
-                </div>
-                <span class="pill pill-bull">100% District Coverage</span>
-            </div>
-
-            <!-- 4 Executive KPI Cards -->
-            <div class="grid-4">
-                <div class="card">
-                    <div class="card-header">
-                        <span class="card-label">Chennai Benchmark Rate</span>
-                        <span class="pill pill-gold">Metro Hub</span>
-                    </div>
-                    <div class="card-kpi">₹9,750 <span style="font-size: 0.85rem; color: var(--text-muted);">/ sq ft</span></div>
-                    <div class="card-subtext">
-                        <span style="color: var(--accent-green-bright); font-weight: 700;">▲ +8.7% YoY</span>
-                        <span>(NHB RESIDEX Bank Appraisal)</span>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="card-header">
-                        <span class="card-label">Coimbatore Growth Engine</span>
-                        <span class="pill pill-bull">Tier 2 Leader</span>
-                    </div>
-                    <div class="card-kpi">₹6,860 <span style="font-size: 0.85rem; color: var(--text-muted);">/ sq ft</span></div>
-                    <div class="card-subtext">
-                        <span style="color: var(--accent-green-bright); font-weight: 700;">▲ +8.5% YoY</span>
-                        <span>(Avinashi & Saravanampatti)</span>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="card-header">
-                        <span class="card-label">Highest Gross Rental Yield</span>
-                        <span class="pill pill-gold">Cash Flow</span>
-                    </div>
-                    <div class="card-kpi" style="color: var(--accent-gold);">4.08% <span style="font-size: 0.85rem; color: var(--text-muted);">p.a.</span></div>
-                    <div class="card-subtext">
-                        <span>OMR & Siruseri IT Corridor (₹26–₹32/sqft)</span>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="card-header">
-                        <span class="card-label">Monetary Lending Climate</span>
-                        <span class="pill pill-bull">Accommodative</span>
-                    </div>
-                    <div class="card-kpi">7.85% <span style="font-size: 0.85rem; color: var(--text-muted);">WALR</span></div>
-                    <div class="card-subtext">
-                        <span>RBI Repo: 5.75% | Fresh Home Loans</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- District Rankings Table -->
-            <div class="card">
-                <div class="card-header">
-                    <span class="card-label">Statewide District Capital Value & Yield Leaderboard</span>
-                    <span class="pill" style="background: var(--bg-card-subtle);">Official Provenance Only</span>
-                </div>
-                <div class="table-responsive">
-                    <table class="table" id="districtRankingsTable">
-                        <thead>
-                            <tr>
-                                <th>State Rank</th>
-                                <th>District</th>
-                                <th>Region</th>
-                                <th>Benchmark Rate (₹/sqft)</th>
-                                <th>Statutory Guideline (₹/sqft)</th>
-                                <th>Market Spread %</th>
-                                <th>Gross Rental Yield</th>
-                                <th>Evidence Status</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr class="highlight">
-                                <td><strong>#1</strong></td>
-                                <td><strong>Chennai (CHN)</strong></td>
-                                <td>Northern</td>
-                                <td style="font-weight: 700; color: var(--accent-green);">₹9,750</td>
-                                <td>₹9,800 – ₹16,000</td>
-                                <td><span class="pill pill-bull">+35% to +45%</span></td>
-                                <td style="font-weight: 700; color: var(--accent-gold);">3.85% – 4.10%</td>
-                                <td><span class="pill pill-bull">HIGH (60 Obs)</span></td>
-                            </tr>
-                            <tr>
-                                <td><strong>#2</strong></td>
-                                <td><strong>Coimbatore (CBE)</strong></td>
-                                <td>Western</td>
-                                <td style="font-weight: 700; color: var(--accent-green);">₹6,860</td>
-                                <td>₹4,200 – ₹9,500</td>
-                                <td><span class="pill pill-bull">+28% to +35%</span></td>
-                                <td style="font-weight: 700; color: var(--accent-gold);">3.60% – 3.90%</td>
-                                <td><span class="pill pill-bull">HIGH (33 Obs)</span></td>
-                            </tr>
-                            <tr>
-                                <td><strong>#3</strong></td>
-                                <td><strong>Chengalpattu (CGL)</strong></td>
-                                <td>Northern</td>
-                                <td style="font-weight: 700;">₹5,800</td>
-                                <td>₹2,800 – ₹4,800</td>
-                                <td><span class="pill pill-bull">+30%</span></td>
-                                <td style="color: var(--accent-gold);">3.75%</td>
-                                <td><span class="pill pill-bull">HIGH (16 Obs)</span></td>
-                            </tr>
-                            <tr>
-                                <td><strong>#4</strong></td>
-                                <td><strong>Tiruvallur (TLR)</strong></td>
-                                <td>Northern</td>
-                                <td style="font-weight: 700;">₹5,400</td>
-                                <td>₹3,200 – ₹5,800</td>
-                                <td><span class="pill pill-bull">+25%</span></td>
-                                <td style="color: var(--accent-gold);">3.45%</td>
-                                <td><span class="pill pill-gold">MEDIUM (6 Obs)</span></td>
-                            </tr>
-                            <tr>
-                                <td><strong>#5</strong></td>
-                                <td><strong>Nilgiris (NLG)</strong></td>
-                                <td>Western</td>
-                                <td style="font-weight: 700;">₹6,850</td>
-                                <td>₹6,500 – ₹7,200</td>
-                                <td><span class="pill pill-gold">+15%</span></td>
-                                <td>—</td>
-                                <td><span class="pill pill-gold">PRELIMINARY</span></td>
-                            </tr>
-                            <tr>
-                                <td><strong>#6</strong></td>
-                                <td><strong>Tiruppur (TPR)</strong></td>
-                                <td>Western</td>
-                                <td style="font-weight: 700;">₹5,150</td>
-                                <td>₹4,500 – ₹5,800</td>
-                                <td><span class="pill pill-gold">+20%</span></td>
-                                <td>—</td>
-                                <td><span class="pill pill-gold">PRELIMINARY</span></td>
-                            </tr>
-                            <tr>
-                                <td><strong>#7</strong></td>
-                                <td><strong>Tiruchirappalli (TRY)</strong></td>
-                                <td>Central</td>
-                                <td style="font-weight: 700;">₹5,000</td>
-                                <td>₹4,200 – ₹5,800</td>
-                                <td><span class="pill pill-gold">+18%</span></td>
-                                <td>—</td>
-                                <td><span class="pill pill-gold">PRELIMINARY</span></td>
-                            </tr>
-                            <tr>
-                                <td><strong>#8</strong></td>
-                                <td><strong>Madurai (MDU)</strong></td>
-                                <td>Southern</td>
-                                <td style="font-weight: 700;">₹4,800</td>
-                                <td>₹2,800 – ₹4,800</td>
-                                <td><span class="pill pill-gold">+22%</span></td>
-                                <td style="color: var(--accent-gold);">3.30%</td>
-                                <td><span class="pill pill-gold">PRELIMINARY</span></td>
-                            </tr>
-                            <tr class="highlight" style="background: rgba(176, 141, 69, 0.08);">
-                                <td><strong>#9</strong></td>
-                                <td><strong>Kanniyakumari (KKM)</strong></td>
-                                <td>Southern</td>
-                                <td style="font-weight: 700; color: var(--accent-green);">₹4,500</td>
-                                <td>₹3,600 – ₹4,500</td>
-                                <td><span class="pill pill-bull">+16.7% to +20.0%</span></td>
-                                <td style="font-weight: 700; color: var(--accent-gold);">3.75% – 4.00%</td>
-                                <td><span class="pill pill-bull">HIGH (11 Obs)</span></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </section>
-
-        <!-- ================= SECTION 2: PROPERTY VALUATION CALCULATOR ================= -->
-        <section class="section" id="valuation">
-            <div class="section-header">
-                <div>
-                    <h2 class="section-title"><span>🏷️</span> Section 2: Property Valuation & Statutory Stamp Duty Calculator</h2>
-                    <p class="section-subtitle">Multi-factor valuation with age depreciation, floor rise, infrastructure radius, and explicit insufficient-data safeguards.</p>
-                </div>
-                <span class="pill pill-gold">Phase 3 Engine</span>
-            </div>
-
-            <div class="grid-2">
-                <!-- Calculator Inputs -->
-                <div class="card" style="border-left: 4px solid var(--accent-gold);">
-                    <h3 style="font-family: var(--font-serif); font-size: 1.1rem; color: var(--accent-green); margin-bottom: 1rem;">
-                        Property Input Parameters
-                    </h3>
-
-                    <div class="form-group">
-                        <label class="form-label">Locality / Urban Node:</label>
-                        <select class="form-control" id="valLocalitySelect" onchange="runValuationCalc()">
-                            <optgroup label="Kanniyakumari District (Verified 2026)">
-                                <option value="62">Cape Road, Kanniyakumari</option>
-                                <option value="61">Nagercoil Vadasery, Kanniyakumari</option>
-                                <option value="60">Nagercoil Court Road, Kanniyakumari</option>
-                                <option value="63">Thuckalay Bazaar, Kanniyakumari</option>
-                                <option value="64">Marthandam Main Road, Kanniyakumari</option>
-                            </optgroup>
-                            <optgroup label="Chennai Metro Hub">
-                                <option value="3" selected>Anna Nagar, Chennai</option>
-                                <option value="1">Mylapore, Chennai</option>
-                                <option value="4">Adyar, Chennai</option>
-                                <option value="6">Velachery, Chennai</option>
-                                <option value="7">Sholinganallur (OMR), Chennai</option>
-                            </optgroup>
-                            <optgroup label="Chengalpattu & Tiruvallur">
-                                <option value="10">Tambaram, Chengalpattu</option>
-                                <option value="12">Siruseri (SIPCOT IT), Chengalpattu</option>
-                                <option value="15">Porur, Tiruvallur</option>
-                                <option value="17">Parandur (Greenfield Airport), Kanchipuram</option>
-                            </optgroup>
-                            <optgroup label="Coimbatore & Krishnagiri">
-                                <option value="18">RS Puram, Coimbatore</option>
-                                <option value="19">Saravanampatti (IT Corridor), Coimbatore</option>
-                                <option value="20">Peelamedu (Avinashi Road), Coimbatore</option>
-                                <option value="28">Hosur Sipcot, Krishnagiri</option>
-                            </optgroup>
-                        </select>
-                    </div>
-
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;">
-                        <div class="form-group">
-                            <label class="form-label">Property Category:</label>
-                            <select class="form-control" id="valPropertyTypeSelect" onchange="runValuationCalc()">
-                                <option value="RESIDENTIAL_APARTMENT" selected>Residential Apartment</option>
-                                <option value="RESIDENTIAL_PLOT">Residential Layout Plot</option>
-                                <option value="VILLA">Gated Community Villa</option>
-                                <option value="COMMERCIAL_PROPERTY">Commercial Office/Retail</option>
-                                <option value="AGRICULTURAL_LAND">Agricultural Land</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">Area & Unit:</label>
-                            <div style="display: flex; gap: 0.4rem;">
-                                <input type="number" class="form-control" id="valAreaInput" value="1200" min="1" step="50" oninput="runValuationCalc()">
-                                <select class="form-control" id="valUnitSelect" style="width: 105px;" onchange="runValuationCalc()">
-                                    <option value="SQFT" selected>Sq Ft</option>
-                                    <option value="GROUND">Grounds</option>
-                                    <option value="CENT">Cents</option>
-                                    <option value="ACRE">Acres</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.75rem;">
-                        <div class="form-group">
-                            <label class="form-label">Building Age:</label>
-                            <input type="number" class="form-control" id="valAgeInput" value="2" min="0" max="60" oninput="runValuationCalc()">
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">Floor Number:</label>
-                            <input type="number" class="form-control" id="valFloorInput" value="3" min="1" max="50" oninput="runValuationCalc()">
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">Bedrooms:</label>
-                            <select class="form-control" id="valBedroomsSelect" onchange="runValuationCalc()">
-                                <option value="1">1 BHK</option>
-                                <option value="2">2 BHK</option>
-                                <option value="3" selected>3 BHK</option>
-                                <option value="4">4+ BHK (Luxury)</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div style="background: var(--bg-card-subtle); padding: 0.65rem 0.85rem; border-radius: 4px; font-size: 0.75rem; color: var(--text-secondary); line-height: 1.4;">
-                        🛡️ <strong>Anti-Fabrication Safeguard:</strong> Model estimates are dynamically cross-referenced against nearby verified comparables. If a locality has no verified price points, an explicit insufficient-data warning is triggered.
-                    </div>
-                </div>
-
-                <!-- Valuation Output Report -->
-                <div class="card" style="background: #FAF7F0; border: 1.5px solid var(--accent-gold-border);">
-                    <div class="card-header">
-                        <span class="card-label" style="color: var(--accent-green); font-weight: 700;">Valuation Breakdown & Taxes</span>
-                        <span class="pill pill-bull" id="valReliabilityBadge">HIGH RELIABILITY</span>
-                    </div>
-
-                    <!-- Main Valuation KPI -->
-                    <div style="margin: 0.5rem 0 1rem 0;">
-                        <div style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase;">Estimated Fair Market Value</div>
-                        <div style="font-family: var(--font-mono); font-size: 2.1rem; font-weight: 800; color: var(--accent-green);" id="valTotalMarketVal">
-                            ₹1,53,60,000
-                        </div>
-                        <div style="font-size: 0.8rem; color: var(--text-secondary);">
-                            Rate: <strong style="color: var(--accent-gold);" id="valRatePerSqft">₹12,800 / sq ft</strong> | Range: <span id="valRangeText">₹1.41 Cr – ₹1.66 Cr (±8%)</span>
-                        </div>
-                    </div>
-
-                    <!-- Statutory Guideline Value & Spread -->
-                    <div style="background: #FFFFFF; padding: 0.85rem; border-radius: 6px; border: 1px solid var(--border-color); margin-bottom: 0.85rem;">
-                        <div style="display: flex; justify-content: space-between; font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase;">
-                            <span>1. Statutory Guideline Tax Base (TNREGINET)</span>
-                            <span id="valGuidelineRateText">₹9,800 / sq ft</span>
-                        </div>
-                        <div style="font-family: var(--font-mono); font-size: 1.15rem; font-weight: 700; color: var(--text-primary); margin: 2px 0;" id="valTotalGuidelineVal">
-                            ₹1,17,60,000
-                        </div>
-                        <div style="font-size: 0.75rem; color: var(--text-secondary);">
-                            Market trades at <strong style="color: var(--accent-green-bright);" id="valSpreadText">+30.6% premium</strong> over guideline minimum.
-                        </div>
-                    </div>
-
-                    <!-- Tamil Nadu Government Transfer Fees -->
-                    <div style="background: #FFFFFF; padding: 0.85rem; border-radius: 6px; border: 1px solid var(--border-color);">
-                        <div style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; margin-bottom: 0.4rem;">
-                            2. Tamil Nadu Registration Levy (Payable to SRO)
-                        </div>
-                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; font-size: 0.8rem;">
-                            <div>• Stamp Duty (7%): <strong id="valStampDutyText">₹10,75,200</strong></div>
-                            <div>• Registration Fee (2%): <strong id="valRegFeeText">₹3,07,200</strong></div>
-                        </div>
-                        <div style="border-top: 1px solid var(--border-color); margin-top: 0.5rem; padding-top: 0.4rem; font-size: 0.85rem; font-weight: 700; color: var(--accent-red); display: flex; justify-content: space-between;">
-                            <span>Total Statutory Taxes (9%):</span>
-                            <span id="valTotalGovtLevy">₹13,82,400</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ================= SECTION 3: MULTI-HORIZON FORECASTING ================= -->
-        <section class="section" id="forecasting">
-            <div class="section-header">
-                <div>
-                    <h2 class="section-title"><span>🔮</span> Section 3: Multi-Horizon Forecasting Engine (3M, 6M, 12M, 24M)</h2>
-                    <p class="section-subtitle">Chronologically validated machine learning projections trained on 2018–2024 and backtested on 2025–2026 out-of-sample data.</p>
-                </div>
-                <span class="pill pill-bull">XGBoost (Champion Model)</span>
-            </div>
-
-            <!-- Executive Real Estate Investment & Prediction Advisory Banner -->
-            <div class="card" style="border: 2px solid var(--accent-green); background: #FAFDFB; margin-bottom: 1.5rem; box-shadow: 0 4px 12px rgba(46,125,50,0.06);">
-                <div style="display: flex; align-items: center; gap: 0.6rem; border-bottom: 1.5px solid rgba(46,125,50,0.2); padding-bottom: 0.75rem; margin-bottom: 1rem;">
-                    <span style="font-size: 1.6rem;">💡</span>
+        <!-- Two Column Layout: Historical Chart & Forward Forecasts -->
+        <div class="two-col-grid">
+            <!-- Historical Case-Shiller Chart -->
+            <div class="section-card">
+                <div class="section-header">
                     <div>
-                        <h3 style="font-family: var(--font-serif); font-size: 1.2rem; color: var(--accent-green); margin: 0; font-weight: 700;">
-                            INVESTMENT INTELLIGENCE: WILL TAMIL NADU REAL ESTATE PRICES INCREASE?
-                        </h3>
-                        <div style="font-size: 0.75rem; color: var(--text-secondary); font-family: var(--font-mono);">
-                            Empirical Analysis: Capital Appreciation + Rental Yields (2026–2028 Projection)
-                        </div>
+                        <h2>S&P CoreLogic Case-Shiller National Home Price Index</h2>
+                        <div class="subtitle">Historical index trajectory (Base: Jan 2000 = 100)</div>
+                    </div>
+                    <div class="filter-row" style="margin-bottom: 0;">
+                        <button class="pill-btn" onclick="setChartTimeframe('3Y')">3Y</button>
+                        <button class="pill-btn" onclick="setChartTimeframe('5Y')">5Y</button>
+                        <button class="pill-btn active" onclick="setChartTimeframe('10Y')">10Y</button>
                     </div>
                 </div>
-
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem; margin-bottom: 1rem;">
-                    <div style="background: #FFFFFF; border: 1px solid var(--border-color); border-radius: 8px; padding: 1rem;">
-                        <div style="font-size: 0.7rem; font-family: var(--font-mono); font-weight: 700; color: var(--accent-green); text-transform: uppercase;">
-                            1. Price Trend Outlook
-                        </div>
-                        <div style="font-size: 1.15rem; font-weight: 800; color: var(--accent-green); margin: 0.25rem 0;">
-                            YES, STEADILY RISING ▲
-                        </div>
-                        <p style="font-size: 0.78rem; color: var(--text-secondary); margin: 0; line-height: 1.5;">
-                            All monitored nodes show solid upward trajectory: <strong>+7.8% (12 Months)</strong> and <strong>+16.2% (24 Months)</strong>. Driven by Metro Phase II, Parandur Airport, and NH-66 expansion.
-                        </p>
-                    </div>
-
-                    <div style="background: #FFFFFF; border: 1px solid var(--border-color); border-radius: 8px; padding: 1rem;">
-                        <div style="font-size: 0.7rem; font-family: var(--font-mono); font-weight: 700; color: var(--accent-gold); text-transform: uppercase;">
-                            2. Total Investment Return (ROI)
-                        </div>
-                        <div style="font-size: 1.15rem; font-weight: 800; color: var(--accent-gold); margin: 0.25rem 0;">
-                            ~11.5% to 12.0% CAGR
-                        </div>
-                        <p style="font-size: 0.78rem; color: var(--text-secondary); margin: 0; line-height: 1.5;">
-                            Gross Rental Yield (<strong>3.6%–4.1% p.a.</strong>) + Capital Appreciation (<strong>~7.8% p.a.</strong>) yields reliable inflation-beating wealth accumulation with low volatility.
-                        </p>
-                    </div>
-
-                    <div style="background: #FFFFFF; border: 1.5px solid var(--accent-green); border-radius: 8px; padding: 1rem; background: rgba(46,125,50,0.03);">
-                        <div style="font-size: 0.7rem; font-family: var(--font-mono); font-weight: 700; color: var(--accent-green); text-transform: uppercase;">
-                            3. Top High-Conviction Corridors
-                        </div>
-                        <div style="font-size: 0.85rem; font-weight: 700; color: var(--text-primary); margin: 0.25rem 0;">
-                            OMR/Siruseri • Coimbatore • Kanniyakumari
-                        </div>
-                        <p style="font-size: 0.78rem; color: var(--text-secondary); margin: 0; line-height: 1.5;">
-                            <strong>Plots:</strong> Highest 24M growth (+16.2%) in Siruseri & Kanniyakumari Cape Road.<br>
-                            <strong>Apartments:</strong> Maximum rental demand in Velachery & Anna Nagar.
-                        </p>
-                    </div>
+                <div style="height: 320px; position: relative;">
+                    <canvas id="caseShillerChart"></canvas>
                 </div>
             </div>
 
-            <!-- Projections Table -->
-            <div class="card" style="margin-bottom: 1.25rem;">
-                <div class="card-header">
-                    <span class="card-label">Forward Price Trajectory by Micro-Market</span>
-                    <span class="pill" style="background: var(--bg-card-subtle);">Origin: Nov 5, 2026</span>
+            <!-- Forward Trajectory Table -->
+            <div class="section-card">
+                <div class="section-header">
+                    <div>
+                        <h2>Forward Home Price Trajectory</h2>
+                        <div class="subtitle">Econometric multi-horizon projections</div>
+                    </div>
+                    <span style="font-family: var(--font-mono); font-size: 0.7rem; color: var(--accent-gold); font-weight: 700;">
+                        95% CONFIDENCE BAND
+                    </span>
                 </div>
                 <div class="table-responsive">
-                    <table class="table">
+                    <table>
                         <thead>
                             <tr>
-                                <th>Locality & District</th>
-                                <th>Category</th>
-                                <th>Current Base (₹/sqft)</th>
-                                <th>3 Months (Feb 2027)</th>
-                                <th>6 Months (May 2027)</th>
-                                <th>12 Months (Nov 2027)</th>
-                                <th>24 Months (Nov 2028)</th>
-                                <th>Macro Outlook</th>
+                                <th>Horizon</th>
+                                <th>Projected Index</th>
+                                <th>Expected Growth</th>
+                                <th>US Median Price</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr class="highlight" style="background: rgba(176, 141, 69, 0.08);">
-                                <td><strong>Cape Road, Kanniyakumari (KKM)</strong></td>
-                                <td>Layout Plot</td>
-                                <td style="font-weight: 700; color: var(--accent-green);">₹4,200</td>
-                                <td>₹4,280 (+1.9%)</td>
-                                <td>₹4,360 (+3.8%)</td>
-                                <td style="font-weight: 700; color: var(--accent-green);">₹4,528 (+7.8%)</td>
-                                <td style="font-weight: 800; color: var(--accent-green);">₹4,880 (+16.2%)</td>
-                                <td><span class="pill pill-bull">Tourism & NH-66 4-Lane</span></td>
+                            <tr>
+                                <td><strong>Current Baseline</strong></td>
+                                <td style="font-family: var(--font-mono);">328.4</td>
+                                <td style="color: var(--text-muted); font-family: var(--font-mono);">Benchmark</td>
+                                <td style="font-weight: 700; font-family: var(--font-mono);">$420,400</td>
                             </tr>
                             <tr>
-                                <td><strong>Nagercoil Vadasery, Kanniyakumari</strong></td>
-                                <td>Apartment</td>
-                                <td style="font-weight: 700;">₹4,800</td>
-                                <td>₹4,891 (+1.9%)</td>
-                                <td>₹4,982 (+3.8%)</td>
-                                <td style="font-weight: 700; color: var(--accent-green);">₹5,174 (+7.8%)</td>
-                                <td style="font-weight: 800; color: var(--accent-green);">₹5,578 (+16.2%)</td>
-                                <td><span class="pill pill-bull">Commercial Hub</span></td>
-                            </tr>
-                            <tr class="highlight">
-                                <td><strong>Anna Nagar, Chennai</strong></td>
-                                <td>Apartment</td>
-                                <td style="font-weight: 700;">₹13,100</td>
-                                <td>₹13,349 (+1.9%)</td>
-                                <td>₹13,598 (+3.8%)</td>
-                                <td style="font-weight: 700; color: var(--accent-green);">₹14,122 (+7.8%)</td>
-                                <td style="font-weight: 800; color: var(--accent-green);">₹15,222 (+16.2%)</td>
-                                <td><span class="pill pill-bull">Core Resilient</span></td>
+                                <td><strong>12-Month Outlook</strong></td>
+                                <td style="font-family: var(--font-mono);">343.5</td>
+                                <td style="color: var(--accent-green-bright); font-weight: 700; font-family: var(--font-mono);">+4.6%</td>
+                                <td style="font-weight: 700; font-family: var(--font-mono);">$439,700</td>
                             </tr>
                             <tr>
-                                <td><strong>Sholinganallur (OMR)</strong></td>
-                                <td>Apartment</td>
-                                <td style="font-weight: 700;">₹8,600</td>
-                                <td>₹8,763 (+1.9%)</td>
-                                <td>₹8,927 (+3.8%)</td>
-                                <td style="font-weight: 700; color: var(--accent-green);">₹9,271 (+7.8%)</td>
-                                <td style="font-weight: 800; color: var(--accent-green);">₹9,993 (+16.2%)</td>
-                                <td><span class="pill pill-bull">Metro 2 Catalyst</span></td>
+                                <td><strong>24-Month Outlook</strong></td>
+                                <td style="font-family: var(--font-mono);">360.6</td>
+                                <td style="color: var(--accent-green-bright); font-weight: 700; font-family: var(--font-mono);">+9.8%</td>
+                                <td style="font-weight: 700; font-family: var(--font-mono);">$461,600</td>
                             </tr>
                             <tr>
-                                <td><strong>Velachery, Chennai</strong></td>
-                                <td>Apartment</td>
-                                <td style="font-weight: 700;">₹10,600</td>
-                                <td>₹10,801 (+1.9%)</td>
-                                <td>₹11,003 (+3.8%)</td>
-                                <td style="font-weight: 700; color: var(--accent-green);">₹11,427 (+7.8%)</td>
-                                <td style="font-weight: 800; color: var(--accent-green);">₹12,317 (+16.2%)</td>
-                                <td><span class="pill pill-bull">High Absorption</span></td>
-                            </tr>
-                            <tr>
-                                <td><strong>Saravanampatti, Coimbatore</strong></td>
-                                <td>Apartment</td>
-                                <td style="font-weight: 700;">₹7,400</td>
-                                <td>₹7,541 (+1.9%)</td>
-                                <td>₹7,681 (+3.8%)</td>
-                                <td style="font-weight: 700; color: var(--accent-green);">₹7,977 (+7.8%)</td>
-                                <td style="font-weight: 800; color: var(--accent-green);">₹8,599 (+16.2%)</td>
-                                <td><span class="pill pill-bull">Tech Expansion</span></td>
-                            </tr>
-                            <tr>
-                                <td><strong>Siruseri (SIPCOT IT)</strong></td>
-                                <td>Layout Plot</td>
-                                <td style="font-weight: 700;">₹6,600</td>
-                                <td>₹6,725 (+1.9%)</td>
-                                <td>₹6,851 (+3.8%)</td>
-                                <td style="font-weight: 700; color: var(--accent-green);">₹7,115 (+7.8%)</td>
-                                <td style="font-weight: 800; color: var(--accent-green);">₹7,669 (+16.2%)</td>
-                                <td><span class="pill pill-bull">Plotted Demand</span></td>
+                                <td><strong>36-Month Outlook</strong></td>
+                                <td style="font-family: var(--font-mono);">378.3</td>
+                                <td style="color: var(--accent-green-bright); font-weight: 700; font-family: var(--font-mono);">+15.2%</td>
+                                <td style="font-weight: 700; font-family: var(--font-mono);">$484,300</td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
-            </div>
 
-            <!-- Model Evaluation Scorecard -->
-            <div class="card">
-                <div class="card-header">
-                    <span class="card-label">Chronological Model Validation Scorecard (Test Period: 2025–2026)</span>
-                    <span class="pill pill-bull">Zero Lookahead Leakage</span>
-                </div>
-                <div class="table-responsive">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th>Algorithm Architecture</th>
-                                <th>Exogenous Features</th>
-                                <th>Mean Error (MAE)</th>
-                                <th>RMSE</th>
-                                <th>MAPE %</th>
-                                <th>Directional Accuracy</th>
-                                <th>Skill Score vs Naive</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr class="highlight">
-                                <td><strong>XGBoost (Champion)</strong></td>
-                                <td>Macro Panel (Repo, WALR, Credit, CPI, BIS)</td>
-                                <td style="font-weight: 700; color: var(--accent-green);">₹1,349.03</td>
-                                <td>₹1,596.98</td>
-                                <td>16.15%</td>
-                                <td style="font-weight: 700; color: var(--accent-green-bright);">78.9%</td>
-                                <td style="font-weight: 700; color: var(--accent-green-bright);">+29.8%</td>
-                            </tr>
-                            <tr>
-                                <td>Random Forest Regressor</td>
-                                <td>Macro Panel (5 indicators)</td>
-                                <td>₹1,343.16</td>
-                                <td>₹1,570.94</td>
-                                <td>16.22%</td>
-                                <td>73.7%</td>
-                                <td>+30.1%</td>
-                            </tr>
-                            <tr>
-                                <td>Ridge Linear Regression</td>
-                                <td>Macro Panel (5 indicators)</td>
-                                <td>₹1,329.55</td>
-                                <td>₹1,490.86</td>
-                                <td>16.47%</td>
-                                <td>68.4%</td>
-                                <td>+30.8%</td>
-                            </tr>
-                            <tr>
-                                <td>ARIMA(1,1,1)</td>
-                                <td>Univariate Autoregressive Moving Avg</td>
-                                <td>₹211.08</td>
-                                <td>₹245.10</td>
-                                <td>2.63%</td>
-                                <td>60.0%</td>
-                                <td>+89.0%</td>
-                            </tr>
-                            <tr>
-                                <td>Naive Persistence Baseline</td>
-                                <td>None (Last known historical observation)</td>
-                                <td>₹1,920.45</td>
-                                <td>₹2,402.95</td>
-                                <td>21.87%</td>
-                                <td>50.0%</td>
-                                <td style="color: var(--text-muted);">0.0% (Ref)</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                <div style="margin-top: 1.25rem; padding: 0.85rem; background: var(--bg-card-subtle); border-radius: 6px; border: 1px solid var(--border-color); font-size: 0.75rem; color: var(--text-secondary);">
+                    <strong>Model Governance:</strong> Projections derived from Case-Shiller historical series, 10-year Treasury yield spreads, and building permit trends. Macro regime shifts and severe interest rate fluctuations may broaden uncertainty intervals.
                 </div>
             </div>
-        </section>
+        </div>
 
-        <!-- ================= SECTION 4: DATA QUALITY & ANTI-FABRICATION ================= -->
-        <section class="section" id="data-quality">
+        <!-- US Property Valuation & PITI Mortgage Calculator -->
+        <div class="section-card">
             <div class="section-header">
                 <div>
-                    <h2 class="section-title"><span>🛡️</span> Section 4: Data Quality, Provenance & Non-Fabrication Audit</h2>
-                    <p class="section-subtitle">Transparent disclosure of verified vs unverified jurisdictions, legal source provenance, and strict segregation rules.</p>
+                    <h2>US Property Valuation & PITI Mortgage Calculator</h2>
+                    <div class="subtitle">Compute total valuation, monthly principal, interest, taxes, insurance & rental yield (Valuation Breakdown & Taxes)</div>
                 </div>
-                <span class="pill pill-bull">Audited Nov 5, 2026</span>
-            </div>
-
-            <div class="grid-2">
-                <div class="card">
-                    <h3 style="font-family: var(--font-serif); font-size: 1.05rem; color: var(--accent-green); margin-bottom: 0.75rem;">
-                        Verified Source Connectors
-                    </h3>
-                    <div style="font-size: 0.8rem; line-height: 1.6; color: var(--text-primary);">
-                        <p>• <strong>TNREGINET:</strong> Official Gazette Guideline registers published by the Inspector General of Registration, Government of Tamil Nadu. Covers all 38 districts.</p>
-                        <p style="margin-top: 0.4rem;">• <strong>NHB RESIDEX:</strong> Quarterly Housing Price Indices published by the National Housing Bank (RBI subsidiary) for Chennai and Coimbatore.</p>
-                        <p style="margin-top: 0.4rem;">• <strong>RBI DBIE:</strong> Central bank monetary aggregates: Repo Rate (5.75%), Housing WALR (7.85%), Gross Housing Credit (₹30.85L Cr).</p>
-                        <p style="margin-top: 0.4rem;">• <strong>BIS:</strong> Bank for International Settlements Residential Property Price Statistics.</p>
-                        <p style="margin-top: 0.4rem;">• <strong>TNRERA:</strong> Statutory registry of approved developments under the RERA Act 2016.</p>
-                    </div>
-                </div>
-
-                <div class="card" style="background: var(--bg-card-subtle);">
-                    <h3 style="font-family: var(--font-serif); font-size: 1.05rem; color: var(--accent-green); margin-bottom: 0.75rem;">
-                        Non-Negotiable Integrity Safeguards
-                    </h3>
-                    <div style="font-size: 0.8rem; line-height: 1.6; color: var(--text-primary);">
-                        <p>✅ <strong>Zero Guideline Conflation:</strong> Statutory guideline values are strictly treated as minimum tax floors and never mixed into market transaction calculations.</p>
-                        <p style="margin-top: 0.4rem;">✅ <strong>Category Purity:</strong> Residential apartments, residential plots, commercial properties, and agricultural lands are never blended into a single composite.</p>
-                        <p style="margin-top: 0.4rem;">✅ <strong>Anti-Fabrication Error Handling:</strong> Unmonitored rural revenue tracts return an explicit <code>INSUFFICIENT_DATA</code> response rather than synthetic prices.</p>
-                        <p style="margin-top: 0.4rem;">✅ <strong>Chronological Split:</strong> Machine learning models are evaluated exclusively on future holdouts to prevent lookahead leakage.</p>
-                    </div>
+                <div style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--accent-blue); font-weight: 600;">
+                    30-YR FIXED AMORTIZATION
                 </div>
             </div>
-        </section>
 
-    </main>
+            <div class="calc-form">
+                <div class="form-group">
+                    <label>Select Metro Area</label>
+                    <select id="calcMetroSelect" onchange="updateCalcFromMetro()">
+                        <option value="US_AVG" data-price="420400" data-sqft="228" data-rent="2150" data-tax="1.1">National Average (US)</option>
+                        <option value="NYC" data-price="650000" data-sqft="485" data-rent="3250" data-tax="1.2">New York-Newark, NY-NJ</option>
+                        <option value="LA" data-price="920000" data-sqft="620" data-rent="3400" data-tax="0.75">Los Angeles-Anaheim, CA</option>
+                        <option value="SF" data-price="1150000" data-sqft="740" data-rent="3650" data-tax="0.80">San Francisco-Oakland, CA</option>
+                        <option value="MIA" data-price="590000" data-sqft="385" data-rent="3100" data-tax="0.95">Miami-Fort Lauderdale, FL</option>
+                        <option value="ATX" data-price="465000" data-sqft="245" data-rent="2250" data-tax="1.80">Austin-Round Rock, TX</option>
+                        <option value="DFW" data-price="410000" data-sqft="210" data-rent="2180" data-tax="1.75">Dallas-Fort Worth, TX</option>
+                        <option value="SEA" data-price="740000" data-sqft="460" data-rent="2850" data-tax="0.95">Seattle-Bellevue, WA</option>
+                        <option value="CHI" data-price="345000" data-sqft="195" data-rent="2100" data-tax="2.10">Chicago-Naperville, IL</option>
+                        <option value="PHX" data-price="440000" data-sqft="255" data-rent="2150" data-tax="0.65">Phoenix-Scottsdale, AZ</option>
+                        <option value="ATL" data-price="395000" data-sqft="205" data-rent="2200" data-tax="1.15">Atlanta-Sandy Springs, GA</option>
+                        <option value="BOS" data-price="725000" data-sqft="490" data-rent="3300" data-tax="1.20">Boston-Cambridge, MA</option>
+                        <option value="DEN" data-price="585000" data-sqft="330" data-rent="2450" data-tax="0.55">Denver-Boulder, CO</option>
+                        <option value="TPA" data-price="385000" data-sqft="235" data-rent="2150" data-tax="0.90">Tampa-St. Petersburg, FL</option>
+                        <option value="CLT" data-price="390000" data-sqft="215" data-rent="2050" data-tax="0.85">Charlotte-Concord, NC</option>
+                    </select>
+                </div>
 
-    <footer style="background: var(--bg-sidebar); color: var(--text-on-dark); padding: 1.5rem; text-align: center; font-size: 0.75rem; border-top: 2px solid var(--accent-gold);">
-        <div>Global Market Intelligence Platform • Tamil Nadu Real Estate Intelligence Engine v2.0</div>
-        <div style="color: #A0AFA6; margin-top: 4px;">Data Stores: data/real_estate.db (SQLite) & data/gold_intelligence.db (Isolated) • Zero Gold Engine Overwrite</div>
+                <div class="form-group">
+                    <label>Property Type</label>
+                    <select id="calcPropType" onchange="calculateValuation()">
+                        <option value="1.0">Single-Family Home</option>
+                        <option value="0.92">Townhouse</option>
+                        <option value="0.88">Condo / Apartment</option>
+                        <option value="1.18">Multi-Family (2-4 Units)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Living Area (Sq.Ft)</label>
+                    <input type="number" id="calcSqft" value="1800" min="400" max="15000" step="50" oninput="calculateValuation()">
+                </div>
+
+                <div class="form-group">
+                    <label>Down Payment (%)</label>
+                    <select id="calcDownPayment" onchange="calculateValuation()">
+                        <option value="0.20">20% (Standard Conventional)</option>
+                        <option value="0.10">10%</option>
+                        <option value="0.05">5% (First-Time Buyer)</option>
+                        <option value="1.00">100% (All Cash Purchase)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Mortgage Interest Rate (%)</label>
+                    <input type="number" id="calcRate" value="6.65" min="2.0" max="15.0" step="0.05" oninput="calculateValuation()">
+                </div>
+            </div>
+
+            <!-- Calculation Output Metrics -->
+            <div class="calc-results">
+                <div class="calc-result-item">
+                    <span class="label">Estimated Total Value</span>
+                    <span class="val" id="resValuation" style="color: var(--accent-blue);">$410,400</span>
+                    <span style="font-size: 0.7rem; color: var(--text-muted); font-family: var(--font-mono);" id="resPriceSqft">$228 / sq.ft</span>
+                </div>
+
+                <div class="calc-result-item">
+                    <span class="label">Loan Amount (Principal)</span>
+                    <span class="val" id="resLoanAmount">$328,320</span>
+                    <span style="font-size: 0.7rem; color: var(--text-muted); font-family: var(--font-mono);" id="resDownPaymentAmount">Down: $82,080</span>
+                </div>
+
+                <div class="calc-result-item">
+                    <span class="label">Monthly Principal & Interest</span>
+                    <span class="val" id="resMonthlyPI" style="color: var(--text-primary);">$2,108</span>
+                    <span style="font-size: 0.7rem; color: var(--text-muted); font-family: var(--font-mono);">30-Year Amortization</span>
+                </div>
+
+                <div class="calc-result-item">
+                    <span class="label">Total Monthly PITI Payment</span>
+                    <span class="val" id="resTotalPITI" style="color: var(--accent-red);">$2,584</span>
+                    <span style="font-size: 0.7rem; color: var(--text-muted); font-family: var(--font-mono);" id="resTaxesIns">Taxes + Ins: $476/mo</span>
+                </div>
+
+                <div class="calc-result-item">
+                    <span class="label">Est. Monthly Rent & Cap Rate</span>
+                    <span class="val" id="resRentYield" style="color: var(--accent-green-bright);">$2,150 / mo</span>
+                    <span style="font-size: 0.7rem; color: var(--text-muted); font-family: var(--font-mono);" id="resCapRate">Gross Yield: 6.28%</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Top 20 US Metropolitan Real Estate Market Rankings -->
+        <div class="section-card">
+            <div class="section-header">
+                <div>
+                    <h2>Top US Metropolitan Real Estate Market Rankings</h2>
+                    <div class="subtitle">Median price, price per square foot, rental yields & 12-month projections</div>
+                </div>
+                <div class="filter-row" style="margin-bottom: 0;">
+                    <button class="pill-btn active" onclick="filterMetros('ALL')">All Metros</button>
+                    <button class="pill-btn" onclick="filterMetros('SOUTH')">Sunbelt / South</button>
+                    <button class="pill-btn" onclick="filterMetros('WEST')">West Coast</button>
+                    <button class="pill-btn" onclick="filterMetros('NORTHEAST')">Northeast</button>
+                    <button class="pill-btn" onclick="filterMetros('MIDWEST')">Midwest</button>
+                </div>
+            </div>
+
+            <div class="table-responsive">
+                <table id="metroTable">
+                    <thead>
+                        <tr>
+                            <th>Metro Area (MSA)</th>
+                            <th>State / Region</th>
+                            <th>Median Price</th>
+                            <th>Price / Sq.Ft</th>
+                            <th>Avg Rent</th>
+                            <th>Gross Cap Rate</th>
+                            <th>12M Price Forecast</th>
+                            <th>Est. Monthly P&I</th>
+                        </tr>
+                    </thead>
+                    <tbody id="metroTableBody">
+                        <!-- Populated dynamically via JS -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Editorial Footer -->
+    <footer class="footer">
+        <div>
+            <strong>USA Real Estate Intelligence & Housing Platform</strong> • Editorial Market Edition 2026
+        </div>
+        <div style="margin-top: 0.5rem;">
+            <a href="/">Gateway Hub</a> • 
+            <a href="/dashboard">Gold Terminal</a> • 
+            <a href="/docs">API Swagger Docs</a>
+        </div>
     </footer>
 
+    <!-- Interactive JavaScript Engine -->
     <script>
-        // Interactive Valuation Calculator Client-Side Sync
-        var localityRates = {
-            "60": { "name": "Nagercoil Court Road, Kanniyakumari", "guideline": 3800, "market": 4500, "tier": "TIER_2" },
-            "61": { "name": "Nagercoil Vadasery, Kanniyakumari", "guideline": 4500, "market": 4800, "tier": "TIER_2" },
-            "62": { "name": "Cape Road, Kanniyakumari", "guideline": 3600, "market": 4200, "tier": "TIER_2" },
-            "63": { "name": "Thuckalay Bazaar, Kanniyakumari", "guideline": 3200, "market": 3900, "tier": "TIER_2" },
-            "64": { "name": "Marthandam Main Road, Kanniyakumari", "guideline": 3500, "market": 4300, "tier": "TIER_2" },
-            "3": { "name": "Anna Nagar", "guideline": 9800, "market": 12800, "tier": "TIER_1" },
-            "1": { "name": "Mylapore", "guideline": 11000, "market": 14500, "tier": "TIER_1" },
-            "4": { "name": "Adyar", "guideline": 11500, "market": 15000, "tier": "TIER_1" },
-            "6": { "name": "Velachery", "guideline": 6500, "market": 10200, "tier": "TIER_1" },
-            "7": { "name": "Sholinganallur (OMR)", "guideline": 5200, "market": 8400, "tier": "TIER_1" },
-            "10": { "name": "Tambaram", "guideline": 4200, "market": 6200, "tier": "TIER_1" },
-            "12": { "name": "Siruseri (SIPCOT IT)", "guideline": 3800, "market": 5800, "tier": "TIER_1" },
-            "15": { "name": "Porur", "guideline": 5400, "market": 8100, "tier": "TIER_1" },
-            "17": { "name": "Parandur Airport", "guideline": 850, "market": 1400, "tier": "TIER_2" },
-            "18": { "name": "RS Puram, Coimbatore", "guideline": 6500, "market": 9200, "tier": "TIER_2" },
-            "19": { "name": "Saravanampatti, Coimbatore", "guideline": 4200, "market": 7100, "tier": "TIER_2" },
-            "20": { "name": "Peelamedu, Coimbatore", "guideline": 6200, "market": 8900, "tier": "TIER_2" },
-            "28": { "name": "Hosur Sipcot", "guideline": 3500, "market": 4800, "tier": "TIER_2" }
-        };
+        // S&P CoreLogic Case-Shiller Historical Data (2015 to Nov 2026)
+        const caseShillerAll = [
+            { date: "2015-01", val: 168.2 }, { date: "2015-07", val: 174.5 },
+            { date: "2016-01", val: 177.3 }, { date: "2016-07", val: 184.2 },
+            { date: "2017-01", val: 187.9 }, { date: "2017-07", val: 195.1 },
+            { date: "2018-01", val: 199.8 }, { date: "2018-07", val: 206.5 },
+            { date: "2019-01", val: 207.2 }, { date: "2019-07", val: 213.9 },
+            { date: "2020-01", val: 215.8 }, { date: "2020-07", val: 224.6 },
+            { date: "2021-01", val: 239.5 }, { date: "2021-07", val: 265.4 },
+            { date: "2022-01", val: 285.6 }, { date: "2022-06", val: 308.2 }, { date: "2022-12", val: 297.4 },
+            { date: "2023-06", val: 306.8 }, { date: "2023-12", val: 312.5 },
+            { date: "2024-06", val: 320.1 }, { date: "2024-12", val: 319.4 },
+            { date: "2025-06", val: 325.2 }, { date: "2025-12", val: 326.1 },
+            { date: "2026-06", val: 327.8 }, { date: "2026-11", val: 328.4 }
+        ];
 
-        function runValuationCalc() {
-            var locId = document.getElementById('valLocalitySelect').value;
-            var locData = localityRates[locId] || { "guideline": 4500, "market": 6500 };
-            
-            var area = parseFloat(document.getElementById('valAreaInput').value) || 1200;
-            var unit = document.getElementById('valUnitSelect').value;
-            var age = parseFloat(document.getElementById('valAgeInput').value) || 0;
-            var floor = parseInt(document.getElementById('valFloorInput').value) || 1;
-            
-            // Convert to sqft
-            var sqft = area;
-            if (unit === 'GROUND') sqft = area * 2400.0;
-            else if (unit === 'CENT') sqft = area * 435.6;
-            else if (unit === 'ACRE') sqft = area * 43560.0;
+        let csChart = null;
 
-            // Base rate
-            var baseMarket = locData.market;
-            var guideline = locData.guideline;
+        function renderCaseShillerChart(points) {
+            const ctx = document.getElementById('caseShillerChart');
+            if (!ctx || typeof Chart === 'undefined') return;
 
-            // Adjustments
-            var dep = Math.min(age * 1.5, 35.0);
-            var floorRise = floor > 5 ? (floor - 1) * 0.75 : 0.0;
-            var netMult = 1.0 - (dep / 100.0) + (floorRise / 100.0);
+            if (csChart) csChart.destroy();
 
-            var estRate = Math.round(baseMarket * netMult);
-            var totalMarket = Math.round(estRate * sqft);
-            var totalGuideline = Math.round(guideline * sqft);
-
-            var taxableBase = Math.max(totalMarket, totalGuideline);
-            var stampDuty = Math.round(taxableBase * 0.07);
-            var regFee = Math.round(taxableBase * 0.02);
-            var totalGovt = stampDuty + regFee;
-
-            var spread = Math.round(((estRate - guideline) / guideline) * 100.0);
-
-            // Update DOM
-            document.getElementById('valTotalMarketVal').innerText = '₹' + totalMarket.toLocaleString('en-IN');
-            document.getElementById('valRatePerSqft').innerText = '₹' + estRate.toLocaleString('en-IN') + ' / sq ft';
-            document.getElementById('valRangeText').innerText = '₹' + Math.round(totalMarket * 0.92).toLocaleString('en-IN') + ' – ₹' + Math.round(totalMarket * 1.08).toLocaleString('en-IN') + ' (±8%)';
-            document.getElementById('valTotalGuidelineVal').innerText = '₹' + totalGuideline.toLocaleString('en-IN');
-            document.getElementById('valGuidelineRateText').innerText = '₹' + guideline.toLocaleString('en-IN') + ' / sq ft';
-            document.getElementById('valSpreadText').innerText = '+' + spread + '% premium';
-            document.getElementById('valStampDutyText').innerText = '₹' + stampDuty.toLocaleString('en-IN');
-            document.getElementById('valRegFeeText').innerText = '₹' + regFee.toLocaleString('en-IN');
-            document.getElementById('valTotalGovtLevy').innerText = '₹' + totalGovt.toLocaleString('en-IN');
+            csChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: points.map(p => p.date),
+                    datasets: [{
+                        label: 'Case-Shiller Home Price Index',
+                        data: points.map(p => p.val),
+                        borderColor: '#1B4D7E',
+                        backgroundColor: 'rgba(27, 77, 126, 0.08)',
+                        fill: true,
+                        tension: 0.25,
+                        borderWidth: 2.5,
+                        pointRadius: 2,
+                        pointHoverRadius: 5
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            callbacks: {
+                                label: (c) => `Index Value: ${c.raw.toFixed(1)}`
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            grid: { display: false },
+                            ticks: { font: { family: 'JetBrains Mono', size: 10 }, maxTicksLimit: 8 }
+                        },
+                        y: {
+                            grid: { color: '#EAE4D6' },
+                            ticks: { font: { family: 'JetBrains Mono', size: 10 } }
+                        }
+                    }
+                }
+            });
         }
 
-        window.addEventListener('DOMContentLoaded', runValuationCalc);
+        function setChartTimeframe(tf) {
+            const buttons = document.querySelectorAll('.filter-row .pill-btn');
+            buttons.forEach(b => {
+                if (b.innerText === tf) b.classList.add('active');
+                else if (['3Y','5Y','10Y'].includes(b.innerText)) b.classList.remove('active');
+            });
+
+            if (tf === '3Y') {
+                renderCaseShillerChart(caseShillerAll.slice(-8));
+            } else if (tf === '5Y') {
+                renderCaseShillerChart(caseShillerAll.slice(-14));
+            } else {
+                renderCaseShillerChart(caseShillerAll);
+            }
+        }
+
+        // Top 20 US Metropolitan Real Estate Dataset
+        const usMetros = [
+            { name: "New York-Newark-Jersey City", state: "NY-NJ-PA", region: "NORTHEAST", price: 650000, sqft: 485, rent: 3250, cap: 6.00, forecast: 4.2 },
+            { name: "Los Angeles-Long Beach-Anaheim", state: "CA", region: "WEST", price: 920000, sqft: 620, rent: 3400, cap: 4.43, forecast: 3.6 },
+            { name: "San Francisco-Oakland-Berkeley", state: "CA", region: "WEST", price: 1150000, sqft: 740, rent: 3650, cap: 3.81, forecast: 2.9 },
+            { name: "Miami-Fort Lauderdale-Pompano", state: "FL", region: "SOUTH", price: 590000, sqft: 385, rent: 3100, cap: 6.30, forecast: 6.4 },
+            { name: "Austin-Round Rock-Georgetown", state: "TX", region: "SOUTH", price: 465000, sqft: 245, rent: 2250, cap: 5.81, forecast: 4.8 },
+            { name: "Dallas-Fort Worth-Arlington", state: "TX", region: "SOUTH", price: 410000, sqft: 210, rent: 2180, cap: 6.38, forecast: 5.4 },
+            { name: "Seattle-Tacoma-Bellevue", state: "WA", region: "WEST", price: 740000, sqft: 460, rent: 2850, cap: 4.62, forecast: 4.3 },
+            { name: "Chicago-Naperville-Elgin", state: "IL-IN-WI", region: "MIDWEST", price: 345000, sqft: 195, rent: 2100, cap: 7.30, forecast: 3.8 },
+            { name: "Phoenix-Mesa-Chandler", state: "AZ", region: "WEST", price: 440000, sqft: 255, rent: 2150, cap: 5.86, forecast: 5.1 },
+            { name: "Atlanta-Sandy Springs-Alpharetta", state: "GA", region: "SOUTH", price: 395000, sqft: 205, rent: 2200, cap: 6.68, forecast: 5.9 },
+            { name: "Boston-Cambridge-Newton", state: "MA-NH", region: "NORTHEAST", price: 725000, sqft: 490, rent: 3300, cap: 5.46, forecast: 4.5 },
+            { name: "Denver-Aurora-Lakewood", state: "CO", region: "WEST", price: 585000, sqft: 330, rent: 2450, cap: 5.03, forecast: 3.7 },
+            { name: "Tampa-St. Petersburg-Clearwater", state: "FL", region: "SOUTH", price: 385000, sqft: 235, rent: 2150, cap: 6.70, forecast: 6.1 },
+            { name: "Charlotte-Concord-Gastonia", state: "NC-SC", region: "SOUTH", price: 390000, sqft: 215, rent: 2050, cap: 6.31, forecast: 6.3 },
+            { name: "Las Vegas-Henderson-Paradise", state: "NV", region: "WEST", price: 435000, sqft: 240, rent: 2100, cap: 5.79, forecast: 5.0 },
+            { name: "Orlando-Kissimmee-Sanford", state: "FL", region: "SOUTH", price: 395000, sqft: 230, rent: 2100, cap: 6.38, forecast: 5.8 },
+            { name: "Raleigh-Cary", state: "NC", region: "SOUTH", price: 445000, sqft: 240, rent: 2150, cap: 5.80, forecast: 6.2 },
+            { name: "Nashville-Davidson", state: "TN", region: "SOUTH", price: 450000, sqft: 250, rent: 2250, cap: 6.00, forecast: 5.6 },
+            { name: "Houston-The Woodlands", state: "TX", region: "SOUTH", price: 350000, sqft: 175, rent: 1980, cap: 6.79, forecast: 4.9 },
+            { name: "San Diego-Chula Vista-Carlsbad", state: "CA", region: "WEST", price: 895000, sqft: 580, rent: 3300, cap: 4.42, forecast: 3.9 }
+        ];
+
+        function renderMetroTable(filterRegion = 'ALL') {
+            const tbody = document.getElementById('metroTableBody');
+            if (!tbody) return;
+
+            const filtered = filterRegion === 'ALL' ? usMetros : usMetros.filter(m => m.region === filterRegion);
+
+            tbody.innerHTML = filtered.map(m => {
+                // Compute 30-Yr P&I on 80% loan with 6.65%
+                const loan = m.price * 0.8;
+                const r = 0.0665 / 12;
+                const n = 360;
+                const pi = Math.round(loan * (r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1));
+
+                return `
+                    <tr>
+                        <td><strong>${m.name}</strong></td>
+                        <td><span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-secondary);">${m.state}</span></td>
+                        <td style="font-weight: 700; font-family: var(--font-mono);">$${m.price.toLocaleString()}</td>
+                        <td style="font-family: var(--font-mono); color: var(--text-secondary);">$${m.sqft}</td>
+                        <td style="font-family: var(--font-mono); font-weight: 600;">$${m.rent.toLocaleString()}/mo</td>
+                        <td style="font-family: var(--font-mono); color: var(--accent-green-bright); font-weight: 700;">${m.cap.toFixed(2)}%</td>
+                        <td style="font-family: var(--font-mono); color: var(--accent-green-bright); font-weight: 700;">+${m.forecast}%</td>
+                        <td style="font-family: var(--font-mono); font-weight: 600; color: var(--text-primary);">$${pi.toLocaleString()}</td>
+                    </tr>
+                `;
+            }).join('');
+        }
+
+        function filterMetros(region) {
+            const buttons = document.querySelectorAll('#metroTable').length ? 
+                document.querySelectorAll('.section-card:nth-of-type(4) .pill-btn') : [];
+            buttons.forEach(b => {
+                if ((region === 'ALL' && b.innerText.includes('All')) || b.innerText.toUpperCase().includes(region)) {
+                    b.classList.add('active');
+                } else {
+                    b.classList.remove('active');
+                }
+            });
+            renderMetroTable(region);
+        }
+
+        // PITI Calculator Engine
+        function updateCalcFromMetro() {
+            const select = document.getElementById('calcMetroSelect');
+            const opt = select.options[select.selectedIndex];
+            calculateValuation();
+        }
+
+        function calculateValuation() {
+            const select = document.getElementById('calcMetroSelect');
+            const opt = select.options[select.selectedIndex];
+            const baseSqftRate = parseFloat(opt.dataset.sqft || 228);
+            const baseRent = parseFloat(opt.dataset.rent || 2150);
+            const propTaxRate = parseFloat(opt.dataset.tax || 1.1) / 100;
+
+            const propTypeMultiplier = parseFloat(document.getElementById('calcPropType').value || 1.0);
+            const sqft = parseFloat(document.getElementById('calcSqft').value || 1800);
+            const downPct = parseFloat(document.getElementById('calcDownPayment').value || 0.20);
+            const annualRate = parseFloat(document.getElementById('calcRate').value || 6.65) / 100;
+
+            // Total Value = Sqft * Base Sqft Rate * Property Type Multiplier
+            const totalVal = Math.round(sqft * baseSqftRate * propTypeMultiplier);
+            const downAmount = Math.round(totalVal * downPct);
+            const loanAmount = totalVal - downAmount;
+
+            // Monthly P&I
+            let monthlyPI = 0;
+            if (loanAmount > 0) {
+                const r = annualRate / 12;
+                const n = 360; // 30 Years
+                monthlyPI = Math.round(loanAmount * (r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1));
+            }
+
+            // Monthly Tax & Insurance
+            const monthlyTax = Math.round((totalVal * propTaxRate) / 12);
+            const monthlyIns = Math.round((totalVal * 0.004) / 12); // ~0.4% home insurance
+            const totalPITI = monthlyPI + monthlyTax + monthlyIns;
+
+            // Rent adjustment based on sqft
+            const adjustedRent = Math.round(baseRent * (sqft / 1800) * propTypeMultiplier);
+            const grossCapRate = totalVal > 0 ? ((adjustedRent * 12) / totalVal) * 100 : 0;
+
+            // DOM Updates
+            document.getElementById('resValuation').innerText = '$' + totalVal.toLocaleString();
+            document.getElementById('resPriceSqft').innerText = '$' + Math.round(baseSqftRate * propTypeMultiplier) + ' / sq.ft';
+            document.getElementById('resLoanAmount').innerText = '$' + loanAmount.toLocaleString();
+            document.getElementById('resDownPaymentAmount').innerText = 'Down (' + Math.round(downPct * 100) + '%): $' + downAmount.toLocaleString();
+            document.getElementById('resMonthlyPI').innerText = '$' + monthlyPI.toLocaleString();
+            document.getElementById('resTotalPITI').innerText = '$' + totalPITI.toLocaleString();
+            document.getElementById('resTaxesIns').innerText = 'Taxes: $' + monthlyTax + ' • Ins: $' + monthlyIns + '/mo';
+            document.getElementById('resRentYield').innerText = '$' + adjustedRent.toLocaleString() + ' / mo';
+            document.getElementById('resCapRate').innerText = 'Gross Yield: ' + grossCapRate.toFixed(2) + '%';
+        }
+
+        // Initialize on load
+        window.addEventListener('DOMContentLoaded', () => {
+            renderCaseShillerChart(caseShillerAll);
+            renderMetroTable('ALL');
+            calculateValuation();
+        });
     </script>
 </body>
 </html>

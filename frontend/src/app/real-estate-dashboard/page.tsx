@@ -21,10 +21,10 @@ export default function RealEstateDashboardPage() {
       padding: '2rem'
     }}>
       <h1 style={{ fontSize: '1.5rem', fontWeight: 700, marginBottom: '0.75rem' }}>
-        Opening Tamil Nadu Real Estate Terminal...
+        Opening USA Real Estate Terminal...
       </h1>
       <p style={{ color: '#829184', marginBottom: '1.5rem' }}>
-        Loading verified statewide guideline values, 38 districts & investment models.
+        Loading S&P CoreLogic Case-Shiller Index, Freddie Mac mortgage rates & Top 20 US Metros.
       </p>
       <a
         href="/real-estate-dashboard/index.html"
