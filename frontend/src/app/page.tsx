@@ -6,11 +6,6 @@ import { Sidebar } from '../components/Sidebar';
 import { MarketOverview } from '../components/MarketOverview';
 import { GoldPriceAnalysis } from '../components/GoldPriceAnalysis';
 import { ForecastingSection } from '../components/ForecastingSection';
-import { MarketRegimeSection } from '../components/MarketRegimeSection';
-import { RiskAnalyticsSection } from '../components/RiskAnalyticsSection';
-import { ScenarioForecastingSection } from '../components/ScenarioForecastingSection';
-import { PredictionUncertaintySection } from '../components/PredictionUncertaintySection';
-import { MacroeconomicSection } from '../components/MacroeconomicSection';
 import { ModelPerformanceSection } from '../components/ModelPerformanceSection';
 
 export default function DashboardPage() {
@@ -19,7 +14,6 @@ export default function DashboardPage() {
   const [refreshing, setRefreshing] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
   const [activeSection, setActiveSection] = useState<string>('overview');
-  const [showAdvancedDrawer, setShowAdvancedDrawer] = useState<boolean>(false);
 
   const loadData = useCallback(async () => {
     try {
@@ -46,9 +40,6 @@ export default function DashboardPage() {
 
   const handleSectionSelect = (sectionId: string) => {
     setActiveSection(sectionId);
-    if (['regimes', 'risk', 'scenarios', 'uncertainty', 'macro'].includes(sectionId)) {
-      setShowAdvancedDrawer(true);
-    }
     const element = document.getElementById(sectionId);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -61,45 +52,72 @@ export default function DashboardPage() {
       <Sidebar activeSection={activeSection} onSelectSection={handleSectionSelect} />
 
       {/* Main Terminal Viewport */}
-      <div className="flex-1 flex flex-col min-w-0 md:ml-64">
-        {/* Top Navigation Bar with Market Status */}
-        <header className="h-16 bg-white border-b border-[#E2DDD2] sticky top-0 z-40 flex items-center justify-between px-6 shadow-sm">
-          <div className="flex items-center gap-6 overflow-x-auto whitespace-nowrap">
-            <div className="flex items-center gap-2">
-              <span className="text-xs uppercase tracking-wider text-[#829184] font-mono">COMEX SPOT:</span>
+      <div className="flex-1 flex flex-col min-w-0">
+        {/* Top Navigation Bar with Market Status & Terminal Switchers */}
+        <header className="h-16 bg-white border-b border-[#E2DDD2] sticky top-0 z-40 flex items-center justify-between px-4 md:px-6 shadow-sm gap-4">
+          <div className="flex items-center gap-5 overflow-x-auto whitespace-nowrap py-1">
+            <div className="flex items-center gap-1.5">
+              <span className="text-[11px] uppercase tracking-wider text-[#829184] font-mono">SPOT:</span>
               <span className="text-sm font-bold font-mono text-[#B08D45]">$4,073.00</span>
             </div>
-            <div className="flex items-center gap-2">
-              <span className="text-xs uppercase tracking-wider text-[#829184] font-mono">1D CHANGE:</span>
+            <div className="flex items-center gap-1.5">
+              <span className="text-[11px] uppercase tracking-wider text-[#829184] font-mono">1D:</span>
               <span className="text-sm font-bold font-mono text-[#2E6B4F]">+$132.60 (+3.37%)</span>
             </div>
-            <div className="flex items-center gap-2">
-              <span className="text-xs uppercase tracking-wider text-[#829184] font-mono">INR/10g:</span>
+            <div className="flex items-center gap-1.5 bg-[#FCFAF6] px-2.5 py-1 rounded border border-[#B08D45]">
+              <span className="text-[11px] uppercase tracking-wider text-[#B08D45] font-mono font-bold">1 SOVEREIGN (22K):</span>
+              <span className="text-sm font-extrabold font-mono text-[#263C32]">₹1,07,080</span>
+              <span className="text-xs text-[#829184] font-mono">(₹13,385/g)</span>
+            </div>
+            <div className="flex items-center gap-1.5">
+              <span className="text-[11px] uppercase tracking-wider text-[#829184] font-mono">24K/10g:</span>
               <span className="text-sm font-bold font-mono text-[#343A36]">₹124,073</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <span className="text-xs uppercase tracking-wider text-[#829184] font-mono">1 SOVEREIGN (22K):</span>
-              <span className="text-sm font-bold font-mono text-[#B08D45]">₹1,07,080 (₹13,385/g)</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <span className="text-xs uppercase tracking-wider text-[#829184] font-mono">ATH DD:</span>
-              <span className="text-sm font-bold font-mono text-[#A65345]">-23.42%</span>
             </div>
           </div>
 
-          <div className="flex items-center gap-4 flex-shrink-0">
+          {/* Quick Terminal Switcher & Action Buttons */}
+          <div className="flex items-center gap-2 flex-shrink-0">
+            <a
+              href="/real-estate-dashboard"
+              className="px-3 py-1.5 bg-[#263C32] text-white hover:bg-[#1C2C25] text-xs font-mono font-bold rounded flex items-center gap-1.5 transition shadow-sm"
+              title="Switch to Tamil Nadu Real Estate Terminal"
+            >
+              <span>🏛️</span>
+              <span className="hidden sm:inline">TN Real Estate Terminal</span>
+              <span className="sm:hidden">Real Estate</span>
+              <span>➔</span>
+            </a>
+
+            <a
+              href="/dashboard"
+              className="px-2.5 py-1.5 bg-[#F5F1E8] border border-[#E2DDD2] hover:border-[#B08D45] text-xs font-mono font-semibold rounded text-[#343A36] transition flex items-center gap-1"
+              title="Open Fullscreen Gold Editorial Terminal"
+            >
+              <span>📊</span>
+              <span className="hidden md:inline">Gold Terminal</span>
+            </a>
+
+            <a
+              href="/docs"
+              className="px-2.5 py-1.5 bg-[#F5F1E8] border border-[#E2DDD2] hover:border-[#B08D45] text-xs font-mono font-semibold rounded text-[#343A36] transition flex items-center gap-1"
+              title="Open Interactive API Swagger Documentation"
+            >
+              <span>📖</span>
+              <span className="hidden md:inline">Swagger Docs</span>
+            </a>
+
             <button
               onClick={handleRefresh}
               disabled={refreshing}
-              className="px-3 py-1.5 bg-white border border-[#E2DDD2] hover:border-[#B08D45] text-xs font-mono font-semibold rounded text-[#343A36] transition flex items-center gap-2"
+              className="px-2.5 py-1.5 bg-white border border-[#E2DDD2] hover:border-[#B08D45] text-xs font-mono font-semibold rounded text-[#343A36] transition flex items-center gap-1"
             >
               <span className={refreshing ? 'animate-spin' : ''}>↻</span>
-              <span>REFRESH</span>
+              <span className="hidden sm:inline">REFRESH</span>
             </button>
           </div>
         </header>
 
-        {/* Content Body: 4 Main Sections + Optional Expandable Drawer */}
+        {/* Content Body: 4 Clean, Essential Sections */}
         <main className="flex-1 p-4 md:p-8 space-y-10 max-w-7xl w-full mx-auto">
           {/* Connection Error Banner */}
           {error && (
@@ -139,61 +157,6 @@ export default function DashboardPage() {
             <ModelPerformanceSection metricsData={data?.metrics || null} />
           </section>
 
-          {/* ================= OPTIONAL EXPANDABLE ADVANCED RESEARCH DRAWER ================= */}
-          <div className="pt-4 border-t border-[#E2DDD2]">
-            <button
-              onClick={() => setShowAdvancedDrawer(!showAdvancedDrawer)}
-              className="w-full bg-white border border-[#E2DDD2] hover:border-[#B08D45] p-4 rounded-lg flex items-center justify-between text-left transition shadow-sm"
-            >
-              <div className="flex items-center gap-3">
-                <span className="text-xl">🏛️</span>
-                <div>
-                  <div className="text-sm font-bold text-[#263C32]">
-                    Optional: Advanced Institutional Research, Regimes & Macro Stress Tests
-                  </div>
-                  <div className="text-xs text-[#829184]">
-                    Detailed ADX trend strength, 6 macro stress scenarios, conditional projections, and 7-channel indicators.
-                  </div>
-                </div>
-              </div>
-              <span className="font-mono text-xs text-[#B08D45] font-bold">
-                {showAdvancedDrawer ? '▲ Hide Advanced' : '▼ Expand Details'}
-              </span>
-            </button>
-
-            {showAdvancedDrawer && (
-              <div className="mt-8 space-y-10 animate-fadeIn">
-                {/* Section D: Market Regime Intelligence */}
-                <section id="regimes" className="scroll-mt-20">
-                  <MarketRegimeSection
-                    trendsData={data?.trends || null}
-                    regimeHistoryData={data?.regimeHistory || null}
-                  />
-                </section>
-
-                {/* Section E: Risk Analytics & Stress Testing */}
-                <section id="risk" className="scroll-mt-20">
-                  <RiskAnalyticsSection riskData={data?.risk || null} />
-                </section>
-
-                {/* Section F: Scenario Forecasting */}
-                <section id="scenarios" className="scroll-mt-20">
-                  <ScenarioForecastingSection scenariosData={data?.scenarios || null} />
-                </section>
-
-                {/* Section G: Prediction Uncertainty Engine */}
-                <section id="uncertainty" className="scroll-mt-20">
-                  <PredictionUncertaintySection uncertaintyData={data?.uncertainty || null} />
-                </section>
-
-                {/* Section H: Macroeconomic Intelligence */}
-                <section id="macro" className="scroll-mt-20">
-                  <MacroeconomicSection macroData={data?.macro || null} />
-                </section>
-              </div>
-            )}
-          </div>
-
           {/* Editorial Footer */}
           <footer className="pt-8 pb-12 border-t border-[#E2DDD2] text-xs text-[#829184] flex flex-col md:flex-row justify-between items-center gap-4">
             <div className="flex items-center gap-2">
@@ -202,8 +165,12 @@ export default function DashboardPage() {
                 Global Gold Market Intelligence & Prediction Platform — Editorial Edition 5.0
               </span>
             </div>
-            <div className="font-mono text-[11px] text-[#647068]">
-              4 Main Sections • Verified Historical Observations • Conformal Calibrated
+            <div className="flex items-center gap-4 font-mono text-[11px] text-[#647068]">
+              <a href="/real-estate-dashboard" className="hover:text-[#B08D45] transition">🏛️ TN Real Estate Terminal</a>
+              <span>•</span>
+              <a href="/dashboard" className="hover:text-[#B08D45] transition">📊 Gold Terminal</a>
+              <span>•</span>
+              <a href="/docs" className="hover:text-[#B08D45] transition">📖 Swagger Docs</a>
             </div>
           </footer>
         </main>

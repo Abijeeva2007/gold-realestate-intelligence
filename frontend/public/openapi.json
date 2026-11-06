@@ -1,0 +1,1662 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Global Market Intelligence & Real Estate Platform API",
+    "description": "Research-Grade Gold Forecasting & Tamil Nadu Real Estate Intelligence Engine",
+    "version": "2.0.0"
+  },
+  "paths": {
+    "/api/real-estate/overview": {
+      "get": {
+        "tags": [
+          "Tamil Nadu Real Estate Intelligence"
+        ],
+        "summary": "Get Overview",
+        "description": "Statewide executive summary, total districts, monitored nodes, indices, and macro climate.",
+        "operationId": "get_overview_api_real_estate_overview_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/real-estate/districts": {
+      "get": {
+        "tags": [
+          "Tamil Nadu Real Estate Intelligence"
+        ],
+        "summary": "List Districts",
+        "description": "List all 38 Tamil Nadu districts with headquarters, geographic coordinates, and taluk counts.",
+        "operationId": "list_districts_api_real_estate_districts_get",
+        "parameters": [
+          {
+            "name": "region",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Filter by region (Northern, Western, Southern, Central, Delta)",
+              "title": "Region"
+            },
+            "description": "Filter by region (Northern, Western, Southern, Central, Delta)"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/real-estate/districts/{district_code}": {
+      "get": {
+        "tags": [
+          "Tamil Nadu Real Estate Intelligence"
+        ],
+        "summary": "Get District",
+        "description": "Detailed district profile: taluks, monitored localities, pricing evidence, and infrastructure.",
+        "operationId": "get_district_api_real_estate_districts__district_code__get",
+        "parameters": [
+          {
+            "name": "district_code",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "District Code"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/real-estate/rankings": {
+      "get": {
+        "tags": [
+          "Tamil Nadu Real Estate Intelligence"
+        ],
+        "summary": "Get District Rankings",
+        "description": "Statewide ranking of Tamil Nadu districts by price benchmark, guideline base, and rental yields.",
+        "operationId": "get_district_rankings_api_real_estate_rankings_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/real-estate/localities": {
+      "get": {
+        "tags": [
+          "Tamil Nadu Real Estate Intelligence"
+        ],
+        "summary": "List Localities",
+        "description": "List and filter monitored localities across Tamil Nadu.",
+        "operationId": "list_localities_api_real_estate_localities_get",
+        "parameters": [
+          {
+            "name": "district_code",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Filter by district code (e.g., CHN, CBE, MDU)",
+              "title": "District Code"
+            },
+            "description": "Filter by district code (e.g., CHN, CBE, MDU)"
+          },
+          {
+            "name": "tier",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Filter by tier (TIER_1, TIER_2, TIER_3)",
+              "title": "Tier"
+            },
+            "description": "Filter by tier (TIER_1, TIER_2, TIER_3)"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/real-estate/localities/{locality_id}": {
+      "get": {
+        "tags": [
+          "Tamil Nadu Real Estate Intelligence"
+        ],
+        "summary": "Get Locality",
+        "description": "Locality deep-dive: statutory guideline rate vs market asking price, price history, and nearby infrastructure.",
+        "operationId": "get_locality_api_real_estate_localities__locality_id__get",
+        "parameters": [
+          {
+            "name": "locality_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Locality Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/real-estate/locality-trends/{locality_id}": {
+      "get": {
+        "tags": [
+          "Tamil Nadu Real Estate Intelligence"
+        ],
+        "summary": "Get Locality Trends",
+        "description": "Historical price trajectory, CAGR, and YoY growth for a locality.",
+        "operationId": "get_locality_trends_api_real_estate_locality_trends__locality_id__get",
+        "parameters": [
+          {
+            "name": "locality_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Locality Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/real-estate/rental-yields": {
+      "get": {
+        "tags": [
+          "Tamil Nadu Real Estate Intelligence"
+        ],
+        "summary": "Get Rental Yields",
+        "description": "Empirical rental yield analysis and payback period across Tamil Nadu urban nodes.",
+        "operationId": "get_rental_yields_api_real_estate_rental_yields_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/real-estate/trends": {
+      "get": {
+        "tags": [
+          "Tamil Nadu Real Estate Intelligence"
+        ],
+        "summary": "Get Trends",
+        "description": "Historical real estate index trends and YoY growth trajectories.",
+        "operationId": "get_trends_api_real_estate_trends_get",
+        "parameters": [
+          {
+            "name": "index_name",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Filter by index (e.g., NHB_RESIDEX_CHN, NHB_RESIDEX_CBE, BIS_INDIA_RESIDENTIAL_HPI)",
+              "title": "Index Name"
+            },
+            "description": "Filter by index (e.g., NHB_RESIDEX_CHN, NHB_RESIDEX_CBE, BIS_INDIA_RESIDENTIAL_HPI)"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/real-estate/valuation": {
+      "get": {
+        "tags": [
+          "Tamil Nadu Real Estate Intelligence"
+        ],
+        "summary": "Calculate Valuation Get",
+        "description": "Backwards-compatible GET valuation endpoint.",
+        "operationId": "calculate_valuation_get_api_real_estate_valuation_get",
+        "parameters": [
+          {
+            "name": "locality_id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "description": "Target locality ID",
+              "title": "Locality Id"
+            },
+            "description": "Target locality ID"
+          },
+          {
+            "name": "property_type",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Property type code (e.g., RESIDENTIAL_APARTMENT, RESIDENTIAL_PLOT, VILLA, AGRICULTURAL_LAND)",
+              "default": "RESIDENTIAL_APARTMENT",
+              "title": "Property Type"
+            },
+            "description": "Property type code (e.g., RESIDENTIAL_APARTMENT, RESIDENTIAL_PLOT, VILLA, AGRICULTURAL_LAND)"
+          },
+          {
+            "name": "area",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "number",
+              "description": "Area in chosen unit",
+              "default": 1000.0,
+              "title": "Area"
+            },
+            "description": "Area in chosen unit"
+          },
+          {
+            "name": "unit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Unit (SQFT, SQM, GROUND, CENT, ACRE)",
+              "default": "SQFT",
+              "title": "Unit"
+            },
+            "description": "Unit (SQFT, SQM, GROUND, CENT, ACRE)"
+          },
+          {
+            "name": "age_years",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "number",
+              "description": "Building age in years (0 for new construction / plot)",
+              "default": 0.0,
+              "title": "Age Years"
+            },
+            "description": "Building age in years (0 for new construction / plot)"
+          },
+          {
+            "name": "floor_number",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "description": "Floor number for multi-storey apartments",
+              "default": 1,
+              "title": "Floor Number"
+            },
+            "description": "Floor number for multi-storey apartments"
+          },
+          {
+            "name": "total_floors",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "description": "Total floors in building",
+              "default": 4,
+              "title": "Total Floors"
+            },
+            "description": "Total floors in building"
+          },
+          {
+            "name": "bedrooms",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Number of bedrooms",
+              "title": "Bedrooms"
+            },
+            "description": "Number of bedrooms"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/real-estate/valuation/estimate": {
+      "post": {
+        "tags": [
+          "Tamil Nadu Real Estate Intelligence"
+        ],
+        "summary": "Estimate Valuation Post",
+        "description": "Task 02.2 Phase 7: Specialized multi-pipeline property valuation endpoint.\nAccepts complete property parameters and routes to specialized pipelines for:\nApartments, Plots, Independent Houses, Villas, Commercial, or Agricultural Land.",
+        "operationId": "estimate_valuation_post_api_real_estate_valuation_estimate_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ValuationEstimateRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/real-estate/valuation/comparables": {
+      "get": {
+        "tags": [
+          "Tamil Nadu Real Estate Intelligence"
+        ],
+        "summary": "Get Valuation Comparables",
+        "description": "Fetches recent empirical market comparables used in valuation calculations.",
+        "operationId": "get_valuation_comparables_api_real_estate_valuation_comparables_get",
+        "parameters": [
+          {
+            "name": "locality_id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "description": "Target locality ID",
+              "title": "Locality Id"
+            },
+            "description": "Target locality ID"
+          },
+          {
+            "name": "property_type",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Optional property type code filter",
+              "title": "Property Type"
+            },
+            "description": "Optional property type code filter"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 20,
+              "minimum": 1,
+              "default": 5,
+              "title": "Limit"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/real-estate/forecast": {
+      "get": {
+        "tags": [
+          "Tamil Nadu Real Estate Intelligence"
+        ],
+        "summary": "Get Single Forecast",
+        "description": "Generates multi-horizon price forecast with prediction intervals.\nReturns explicit INSUFFICIENT_DATA if locality lacks required empirical depth.",
+        "operationId": "get_single_forecast_api_real_estate_forecast_get",
+        "parameters": [
+          {
+            "name": "locality_id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "description": "Target locality ID",
+              "title": "Locality Id"
+            },
+            "description": "Target locality ID"
+          },
+          {
+            "name": "property_type",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Property type code",
+              "default": "RESIDENTIAL_APARTMENT",
+              "title": "Property Type"
+            },
+            "description": "Property type code"
+          },
+          {
+            "name": "horizon",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "3M, 6M, 12M, 24M",
+              "default": "12M",
+              "title": "Horizon"
+            },
+            "description": "3M, 6M, 12M, 24M"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/real-estate/performance": {
+      "get": {
+        "tags": [
+          "Tamil Nadu Real Estate Intelligence"
+        ],
+        "summary": "Get Model Performance",
+        "description": "Comprehensive ML model evaluation scorecard, R\u00b2, sMAPE, walk-forward folds, and residual diagnostics.",
+        "operationId": "get_model_performance_api_real_estate_performance_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/real-estate/model-readiness": {
+      "get": {
+        "tags": [
+          "Tamil Nadu Real Estate Intelligence"
+        ],
+        "summary": "Get Model Readiness",
+        "description": "Machine-readable model readiness report, gap reconciliation, and test inventory reconciliation.",
+        "operationId": "get_model_readiness_api_real_estate_model_readiness_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/real-estate/market-comparison": {
+      "get": {
+        "tags": [
+          "Tamil Nadu Real Estate Intelligence"
+        ],
+        "summary": "Get Market Comparisons",
+        "description": "Statewide geographic analytics: district rankings, commercial spreads, and agricultural corridors.",
+        "operationId": "get_market_comparisons_api_real_estate_market_comparison_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/real-estate/rental-yield": {
+      "get": {
+        "tags": [
+          "Tamil Nadu Real Estate Intelligence"
+        ],
+        "summary": "Get Rental Yield Table",
+        "description": "Empirical rental yield benchmarks, gross yields, and payback periods across Tamil Nadu nodes.",
+        "operationId": "get_rental_yield_table_api_real_estate_rental_yield_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/real-estate/forecasts": {
+      "get": {
+        "tags": [
+          "Tamil Nadu Real Estate Intelligence"
+        ],
+        "summary": "Get Forecasts",
+        "description": "Multi-horizon forward price projections (3, 6, 12, 24 months) with 95% confidence intervals.",
+        "operationId": "get_forecasts_api_real_estate_forecasts_get",
+        "parameters": [
+          {
+            "name": "locality_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Optional locality ID filter",
+              "title": "Locality Id"
+            },
+            "description": "Optional locality ID filter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/real-estate/macro": {
+      "get": {
+        "tags": [
+          "Tamil Nadu Real Estate Intelligence"
+        ],
+        "summary": "Get Macro Indicators",
+        "description": "Indian and global real estate macroeconomic drivers.",
+        "operationId": "get_macro_indicators_api_real_estate_macro_get",
+        "parameters": [
+          {
+            "name": "indicator_code",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "e.g., RBI_REPO_RATE, HOME_LOAN_WALR, HOUSING_CREDIT_OUTSTANDING, CPI_HOUSING_INDEX",
+              "title": "Indicator Code"
+            },
+            "description": "e.g., RBI_REPO_RATE, HOME_LOAN_WALR, HOUSING_CREDIT_OUTSTANDING, CPI_HOUSING_INDEX"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/real-estate/sources": {
+      "get": {
+        "tags": [
+          "Tamil Nadu Real Estate Intelligence"
+        ],
+        "summary": "Get Source Status",
+        "description": "Status, provenance, and latest audit logs for all 5 registered real estate connectors.",
+        "operationId": "get_source_status_api_real_estate_sources_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/real-estate/models": {
+      "get": {
+        "tags": [
+          "Tamil Nadu Real Estate Intelligence"
+        ],
+        "summary": "Evaluate Or Get Models",
+        "description": "Model evaluation scorecard, benchmark comparisons, and training integrity policies.",
+        "operationId": "evaluate_or_get_models_api_real_estate_models_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/real-estate/data-quality": {
+      "get": {
+        "tags": [
+          "Tamil Nadu Real Estate Intelligence"
+        ],
+        "summary": "Get Data Quality Report",
+        "description": "Comprehensive data quality and coverage audit across districts, property types, and price types.",
+        "operationId": "get_data_quality_report_api_real_estate_data_quality_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/real-estate/coverage-report": {
+      "get": {
+        "tags": [
+          "Tamil Nadu Real Estate Intelligence"
+        ],
+        "summary": "Get Coverage Report",
+        "description": "Multi-dimensional statewide coverage analytics across districts, price types, and asset classes.",
+        "operationId": "get_coverage_report_api_real_estate_coverage_report_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/real-estate/historical-matrix": {
+      "get": {
+        "tags": [
+          "Tamil Nadu Real Estate Intelligence"
+        ],
+        "summary": "Get Historical Availability Matrix",
+        "description": "Quarterly historical data availability matrix (2018\u20132026) across all 38 districts.",
+        "operationId": "get_historical_availability_matrix_api_real_estate_historical_matrix_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/real-estate/ledger": {
+      "get": {
+        "tags": [
+          "Tamil Nadu Real Estate Intelligence"
+        ],
+        "summary": "Get Verified Ledger",
+        "description": "Inspect verified price observation records with complete source provenance and quality flags.",
+        "operationId": "get_verified_ledger_api_real_estate_ledger_get",
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 500,
+              "minimum": 1,
+              "default": 100,
+              "title": "Limit"
+            }
+          },
+          {
+            "name": "price_type",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Price Type"
+            }
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Status"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/health": {
+      "get": {
+        "summary": "Health Check",
+        "description": "Production health check endpoint verifying database connectivity.",
+        "operationId": "health_check_health_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/": {
+      "get": {
+        "summary": "Root",
+        "operationId": "root__get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/gold/history": {
+      "get": {
+        "summary": "Get Gold History",
+        "description": "Retrieves historical daily gold prices and USD/INR exchange rates from database.",
+        "operationId": "get_gold_history_api_gold_history_get",
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 8000,
+              "minimum": 1,
+              "default": 100,
+              "title": "Limit"
+            }
+          },
+          {
+            "name": "start_date",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Format YYYY-MM-DD",
+              "title": "Start Date"
+            },
+            "description": "Format YYYY-MM-DD"
+          },
+          {
+            "name": "end_date",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Format YYYY-MM-DD",
+              "title": "End Date"
+            },
+            "description": "Format YYYY-MM-DD"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/gold/forecast": {
+      "get": {
+        "summary": "Get Gold Forecast",
+        "description": "Returns multi-horizon forecasts with point estimates and 95% uncertainty intervals.",
+        "operationId": "get_gold_forecast_api_gold_forecast_get",
+        "parameters": [
+          {
+            "name": "model",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Filter by model name: 'XGBoost', 'ARIMA', 'Prophet', 'Naive Random Walk'",
+              "title": "Model"
+            },
+            "description": "Filter by model name: 'XGBoost', 'ARIMA', 'Prophet', 'Naive Random Walk'"
+          },
+          {
+            "name": "horizon_days",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Filter by horizon: 30, 90, 180, 365",
+              "title": "Horizon Days"
+            },
+            "description": "Filter by horizon: 30, 90, 180, 365"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/gold/metrics": {
+      "get": {
+        "summary": "Get Model Metrics",
+        "description": "Returns comparative model performance metrics (MAE, RMSE, MAPE, Skill Score vs. Naive).",
+        "operationId": "get_model_metrics_api_gold_metrics_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/gold/trends": {
+      "get": {
+        "summary": "Get Gold Trends",
+        "description": "Returns current technical trend classification, moving averages, volatility, and drawdowns.",
+        "operationId": "get_gold_trends_api_gold_trends_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/dashboard": {
+      "get": {
+        "summary": "Serve Dashboard",
+        "description": "Serves the Institutional Gold Investment Intelligence Terminal Dashboard.",
+        "operationId": "serve_dashboard_dashboard_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "text/html": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/real-estate-dashboard": {
+      "get": {
+        "summary": "Serve Real Estate Dashboard",
+        "description": "Serves the Tamil Nadu Real Estate Market Intelligence & Prediction Dashboard.",
+        "operationId": "serve_real_estate_dashboard_real_estate_dashboard_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "text/html": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/gold/regimes": {
+      "get": {
+        "summary": "Get Gold Regimes",
+        "description": "Returns historical macroeconomic market regimes, annualized volatility, and returns.",
+        "operationId": "get_gold_regimes_api_gold_regimes_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/gold/intelligence": {
+      "get": {
+        "summary": "Get Gold Intelligence",
+        "description": "Unified Executive Intelligence Overview.\nAggregates market regime, risk indicators, forecast consensus, prediction uncertainty,\nand macroeconomic driver signals.",
+        "operationId": "get_gold_intelligence_api_gold_intelligence_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/gold/risk": {
+      "get": {
+        "summary": "Get Gold Risk",
+        "description": "Comprehensive Gold Market Risk Analytics & Stress Testing.\nReturns realized volatilities (7d, 30d, 90d, full series), drawdown dynamics and recovery,\nHistorical Simulation VaR and CVaR (95% and 99% for 1d and 10d), and 6 macroeconomic stress tests.",
+        "operationId": "get_gold_risk_api_gold_risk_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/gold/scenarios": {
+      "get": {
+        "summary": "Get Gold Scenarios",
+        "description": "Multi-Horizon Conditional Macroeconomic Scenario Forecasts.\nReturns Bullish, Base, and Bearish price trajectories, target ranges, macro assumptions,\nand risk factors across 30, 90, 180, and 365 trading-day horizons.",
+        "operationId": "get_gold_scenarios_api_gold_scenarios_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/gold/uncertainty": {
+      "get": {
+        "summary": "Get Gold Uncertainty",
+        "description": "Prediction Uncertainty, Horizon-Specific Residual Calibration & Conformal Analysis.\nReturns 50%, 80%, and 95% multi-tier prediction intervals, validation-calibrated conformal multipliers,\nout-of-sample breach analysis (upper vs lower breaches), and 60-day rolling coverage.",
+        "operationId": "get_gold_uncertainty_api_gold_uncertainty_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/gold/macro": {
+      "get": {
+        "summary": "Get Gold Macro",
+        "description": "Macroeconomic Intelligence Catalog & Point-in-Time Provenance.\nTracks DXY, US 10Y Yield, US 10Y TIPS Real Yield, US CPI, USD/INR, Gold ETF Holdings,\nand Central Bank Purchases with documented providers, observation lags, and revision policies.",
+        "operationId": "get_gold_macro_api_gold_macro_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/gold/regime-history": {
+      "get": {
+        "summary": "Get Gold Regime History",
+        "description": "Retrieves historical classified market regimes with timestamps and supporting indicator values\n(SMA50, SMA200, SMA ratio, ADX 14d, +DI, -DI, rolling 30d vol, 21d momentum).",
+        "operationId": "get_gold_regime_history_api_gold_regime_history_get",
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 8000,
+              "minimum": 1,
+              "default": 100,
+              "title": "Limit"
+            }
+          },
+          {
+            "name": "regime",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Filter by regime: 'Bullish', 'Bearish', 'Sideways', 'High Volatility'",
+              "title": "Regime"
+            },
+            "description": "Filter by regime: 'Bullish', 'Bearish', 'Sideways', 'High Volatility'"
+          },
+          {
+            "name": "start_date",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Format YYYY-MM-DD",
+              "title": "Start Date"
+            },
+            "description": "Format YYYY-MM-DD"
+          },
+          {
+            "name": "end_date",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Format YYYY-MM-DD",
+              "title": "End Date"
+            },
+            "description": "Format YYYY-MM-DD"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "HTTPValidationError": {
+        "properties": {
+          "detail": {
+            "items": {
+              "$ref": "#/components/schemas/ValidationError"
+            },
+            "type": "array",
+            "title": "Detail"
+          }
+        },
+        "type": "object",
+        "title": "HTTPValidationError"
+      },
+      "ValidationError": {
+        "properties": {
+          "loc": {
+            "items": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "type": "array",
+            "title": "Location"
+          },
+          "msg": {
+            "type": "string",
+            "title": "Message"
+          },
+          "type": {
+            "type": "string",
+            "title": "Error Type"
+          },
+          "input": {
+            "title": "Input"
+          },
+          "ctx": {
+            "type": "object",
+            "title": "Context"
+          }
+        },
+        "type": "object",
+        "required": [
+          "loc",
+          "msg",
+          "type"
+        ],
+        "title": "ValidationError"
+      },
+      "ValuationEstimateRequest": {
+        "properties": {
+          "locality_id": {
+            "type": "integer",
+            "title": "Locality Id",
+            "description": "Target locality ID"
+          },
+          "property_type_code": {
+            "type": "string",
+            "title": "Property Type Code",
+            "description": "RESIDENTIAL_APARTMENT, RESIDENTIAL_PLOT, INDEPENDENT_HOUSE, VILLA, COMMERCIAL_PROPERTY, AGRICULTURAL_LAND",
+            "default": "RESIDENTIAL_APARTMENT"
+          },
+          "area_value": {
+            "type": "number",
+            "exclusiveMinimum": 0.0,
+            "title": "Area Value",
+            "description": "Area in selected unit"
+          },
+          "area_unit": {
+            "type": "string",
+            "title": "Area Unit",
+            "description": "SQFT, SQM, GROUND, CENT, ACRE, HECTARE, KUZHI",
+            "default": "SQFT"
+          },
+          "age_years": {
+            "type": "number",
+            "minimum": 0.0,
+            "title": "Age Years",
+            "description": "Building age in years",
+            "default": 0.0
+          },
+          "floor_number": {
+            "type": "integer",
+            "minimum": 1.0,
+            "title": "Floor Number",
+            "description": "Floor level",
+            "default": 1
+          },
+          "total_floors": {
+            "type": "integer",
+            "minimum": 1.0,
+            "title": "Total Floors",
+            "description": "Total floors in building",
+            "default": 4
+          },
+          "bedrooms": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "minimum": 1.0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Bedrooms",
+            "description": "Number of bedrooms"
+          },
+          "furnishing_status": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Furnishing Status",
+            "description": "UNFURNISHED, SEMI_FURNISHED, or FULLY_FURNISHED",
+            "default": "UNFURNISHED"
+          },
+          "is_corner_plot": {
+            "type": "boolean",
+            "title": "Is Corner Plot",
+            "description": "Whether the plot is at a street corner",
+            "default": false
+          },
+          "road_width_ft": {
+            "type": "number",
+            "exclusiveMinimum": 0.0,
+            "title": "Road Width Ft",
+            "description": "Road width in front of property",
+            "default": 30.0
+          },
+          "is_approved_layout": {
+            "type": "boolean",
+            "title": "Is Approved Layout",
+            "description": "DTCP / CMDA layout approval status",
+            "default": true
+          },
+          "irrigation_type": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Irrigation Type",
+            "description": "NANJAI (wet irrigated canal), DRY_PUNJAI, FLORICULTURE, GARDEN",
+            "default": "DRY_PUNJAI"
+          },
+          "is_main_road_frontage": {
+            "type": "boolean",
+            "title": "Is Main Road Frontage",
+            "description": "Direct arterial road frontage for commercial assets",
+            "default": false
+          },
+          "monthly_rent_inr": {
+            "anyOf": [
+              {
+                "type": "number",
+                "exclusiveMinimum": 0.0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Monthly Rent Inr",
+            "description": "Actual monthly lease rent if known"
+          }
+        },
+        "type": "object",
+        "required": [
+          "locality_id",
+          "area_value"
+        ],
+        "title": "ValuationEstimateRequest"
+      }
+    }
+  }
+}

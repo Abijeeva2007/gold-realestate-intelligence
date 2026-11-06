@@ -190,6 +190,44 @@ export const ForecastingSection: React.FC<ForecastingSectionProps> = ({
           </div>
         </div>
 
+        {/* Executive Summary Card for Common Man */}
+        <div style={{
+          background: "rgba(176, 141, 69, 0.08)",
+          border: "1px solid #B08D45",
+          borderRadius: "8px",
+          padding: "1rem 1.25rem",
+          marginBottom: "1.25rem",
+        }}>
+          <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", marginBottom: "0.5rem" }}>
+            <span style={{ fontSize: "1.1rem" }}>💡</span>
+            <strong style={{ fontSize: "0.95rem", color: "#263C32" }}>
+              EXECUTIVE PREDICTION SUMMARY: WILL GOLD INCREASE OR DECREASE?
+            </strong>
+          </div>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: "0.75rem", fontSize: "0.825rem", color: "#343A36" }}>
+            <div style={{ background: "#FFFFFF", padding: "0.65rem 0.85rem", borderRadius: "6px", border: "1px solid #E2D9C8" }}>
+              <div style={{ fontWeight: 700, color: "#263C32" }}>📅 30 Days (1 Month)</div>
+              <div style={{ color: "#8C6A28", fontWeight: 700, margin: "2px 0" }}>₹1,07,176 (+₹96 / sov) • Stable</div>
+              <div style={{ fontSize: "0.75rem", color: "#556058" }}>Safe window for routine monthly gold accumulation or chit funds.</div>
+            </div>
+            <div style={{ background: "#FFFFFF", padding: "0.65rem 0.85rem", borderRadius: "6px", border: "1.5px solid #2E7D32" }}>
+              <div style={{ fontWeight: 700, color: "#2E7D32" }}>🔥 90 Days (3 Months) — KEY</div>
+              <div style={{ color: "#2E7D32", fontWeight: 800, margin: "2px 0" }}>₹1,11,984 (+₹4,904 / sov) • RISING ▲</div>
+              <div style={{ fontSize: "0.75rem", color: "#263C32", fontWeight: 600 }}>Buy in advance! Buying now for upcoming marriages saves ~₹4,900 per sovereign.</div>
+            </div>
+            <div style={{ background: "#FFFFFF", padding: "0.65rem 0.85rem", borderRadius: "6px", border: "1px solid #E2D9C8" }}>
+              <div style={{ fontWeight: 700, color: "#263C32" }}>⛅ 180 Days (6 Months)</div>
+              <div style={{ color: "#8C6A28", fontWeight: 700, margin: "2px 0" }}>₹1,08,975 (+₹1,895 / sov) • Consolidation</div>
+              <div style={{ fontSize: "0.75rem", color: "#556058" }}>Temporary mid-year price pullbacks offer attractive dip accumulation entries.</div>
+            </div>
+            <div style={{ background: "#FFFFFF", padding: "0.65rem 0.85rem", borderRadius: "6px", border: "1px solid #E2D9C8" }}>
+              <div style={{ fontWeight: 700, color: "#263C32" }}>🚀 365 Days (1 Year)</div>
+              <div style={{ color: "#2E7D32", fontWeight: 800, margin: "2px 0" }}>₹1,14,179 (+₹7,099 / sov) • Strong Rise ▲</div>
+              <div style={{ fontSize: "0.75rem", color: "#556058" }}>Structural macroeconomic rise. Sovereign base projected to exceed ₹1.14L (₹1.29L in showroom).</div>
+            </div>
+          </div>
+        </div>
+
         {/* 4 Horizons Summary Table */}
         <div style={{ overflowX: "auto" }}>
           <table style={{ width: "100%", borderCollapse: "collapse", fontSize: "0.85rem", textAlign: "left" }}>
