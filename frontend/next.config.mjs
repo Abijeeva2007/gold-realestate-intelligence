@@ -17,19 +17,33 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   async rewrites() {
-    if (!isExternalBackend) {
-      return [];
-    }
-    return [
+    const rules = [
       {
-        source: "/api/:path*",
-        destination: `${backendUrl}/api/:path*`,
+        source: "/docs",
+        destination: "/docs/index.html",
       },
       {
-        source: "/health",
-        destination: `${backendUrl}/health`,
+        source: "/real-estate-dashboard",
+        destination: "/real-estate-dashboard/index.html",
+      },
+      {
+        source: "/dashboard",
+        destination: "/dashboard/index.html",
       },
     ];
+    if (isExternalBackend) {
+      rules.push(
+        {
+          source: "/api/:path*",
+          destination: `${backendUrl}/api/:path*`,
+        },
+        {
+          source: "/health",
+          destination: `${backendUrl}/health`,
+        }
+      );
+    }
+    return rules;
   },
 };
 
